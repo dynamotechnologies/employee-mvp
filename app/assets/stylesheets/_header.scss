@@ -31,6 +31,11 @@
 .navbar-brand{
   color: $primary-red !important;
   font-weight: bold;
+  padding-top: 2px;
+
+  img{
+    max-width: 175px;
+  }
 
   .secondary-brand{
     color: $dark-blue;
