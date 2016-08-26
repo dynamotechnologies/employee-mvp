@@ -5,14 +5,6 @@ Rails.application.routes.draw do
   resources :employee_edits
   devise_for :employees, controllers: {registrations: 'registrations'}
 
-  get 'feedback/enter'
-
-  post 'feedback/create'
-
-  get 'feedback/thanks'
-
-  get 'feedback/show'
-
   get 'dashboard' => 'dashboard#index', as: 'dashboard'
 
   post 'kudos' => 'kudos#give', as: 'kudos'
