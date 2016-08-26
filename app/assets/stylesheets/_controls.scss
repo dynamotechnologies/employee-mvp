@@ -42,6 +42,17 @@ td{
   display: none;
 }
 
+
+.login-logo{
+  overflow: hidden;
+  margin-bottom: 20px;
+
+  img{
+    width: 250px;
+  }
+}
+
+
 @media (max-width: $viewport-xs) {
 
   table, thead, tbody, th, td, tr {
