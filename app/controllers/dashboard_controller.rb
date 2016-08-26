@@ -6,9 +6,9 @@ class DashboardController < ApplicationController
     @date = Date.today
 
     if query.nil?
-      @employees = Employee.all
+      @employees = Employee.active
     else
-      @employees = Employee.where('first_name ILIKE ? OR last_name ILIKE ?', "%#{query}%", "%#{query}%")
+      @employees = Employee.where('first_name ILIKE ? OR last_name ILIKE ?', "%#{query}%", "%#{query}%").active
     end
 
   end
