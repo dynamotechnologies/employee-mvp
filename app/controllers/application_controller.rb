@@ -15,4 +15,10 @@ class ApplicationController < ActionController::Base
       'application'
     end
   end
+
+  def authenticate_admin!
+    unless current_employee && current_employee.is_admin
+      redirect_to root_path
+    end
+  end
 end
