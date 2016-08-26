@@ -4,7 +4,7 @@ class EmployeeEditsController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.where("is_active = ?", true).all
+    @employees = Employee.active
   end
 
   # GET /employees/1
