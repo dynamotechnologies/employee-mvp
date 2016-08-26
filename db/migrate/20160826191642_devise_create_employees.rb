@@ -1,9 +1,19 @@
-class DeviseCreateUsers < ActiveRecord::Migration[5.0]
+class DeviseCreateEmployees < ActiveRecord::Migration[5.0]
   def change
-    create_table :users do |t|
+    create_table :employees do |t|
       ## Database authenticatable
+      t.string :username,           null: false, default: ""
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
+
+      t.string :first_name,         null: false, default: ""
+      t.string :last_name,          null: false, default: ""
+
+      t.boolean :is_admin,          null: false, default: false
+      t.boolean :is_active,         null: false, default: true
+
+      t.integer :kudo_balance,      null: false, default: 0
+      t.integer :kudos_received,    null: false, default: 0
 
       ## Recoverable
       t.string   :reset_password_token
@@ -34,9 +44,10 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.timestamps null: false
     end
 
-    add_index :users, :email,                unique: true
-    add_index :users, :reset_password_token, unique: true
-    # add_index :users, :confirmation_token,   unique: true
-    # add_index :users, :unlock_token,         unique: true
+    add_index :employees, :username,             unique: true
+    add_index :employees, :email,                unique: true
+    add_index :employees, :reset_password_token, unique: true
+    # add_index :employees, :confirmation_token,   unique: true
+    # add_index :employees, :unlock_token,         unique: true
   end
 end
