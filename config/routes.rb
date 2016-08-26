@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :employees
+  devise_for :employees, controllers: {registrations: 'registrations'}
   get 'feedback/enter'
 
   post 'feedback/create'
@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'feedback/thanks'
 
   get 'feedback/show'
+
+  get 'dashboard' => 'dashboard#index', as: 'dashboard'
 
   root to: "home#index"
 
