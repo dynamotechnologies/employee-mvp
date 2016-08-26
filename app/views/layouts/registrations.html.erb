@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Employee Kudos MVP</title>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width">
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+<main>
+  <div class="content-container">
+    <div class="login-text-container">
+      <div class="alert"><%= flash[:notice] %></div>
+      <% if flash[:alert] %>
+          <div class="alert alert-danger"><%= flash[:alert] %></div>
+      <% end %>
+      <% if flash[:notice] %>
+          <div class="alert alert-info"><%= flash[:notice] %></div>
+      <% end %>
+      <%= yield %>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>
