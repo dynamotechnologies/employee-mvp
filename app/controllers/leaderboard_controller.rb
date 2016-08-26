@@ -1,7 +1,7 @@
 class LeaderboardController < ApplicationController
 
   def index
-    @employees = Employee.order("kudos_received desc").limit(5).active
+    @employees = Employee.for_leaderboard
   end
 
 end
