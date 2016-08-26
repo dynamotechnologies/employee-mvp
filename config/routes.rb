@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :employee_edits
   devise_for :employees, controllers: {registrations: 'registrations'}
   get 'feedback/enter'
 

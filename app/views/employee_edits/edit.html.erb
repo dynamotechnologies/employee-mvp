@@ -1,0 +1,8 @@
+<h1>Editing Employee</h1>
+
+<%= form_tag("/employee_edits/#{@employee.id}", method: :put) do %>
+  <%= render 'form', employee: @employee %>
+<% end %>
+
+<%= link_to 'Show', employee_edits_path(@employee) %> |
+<%= link_to 'Back', employee_edits_path %>

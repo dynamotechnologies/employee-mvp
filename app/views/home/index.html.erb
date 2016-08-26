@@ -1,3 +1,6 @@
 <p>You can:</p>
+<% if current_employee && current_employee.is_admin %>
+  <%= link_to "Edit Employees", employee_edits_path %>
+<% end %>
 <ul>
 </ul>

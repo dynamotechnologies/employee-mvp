@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>Username: <%= @employee.username %></p>
+<p>First Name: <%= @employee.first_name %></p>
+<p>Last Name: <%= @employee.last_name %></p>
+<p>Email: <%= @employee.email %></p>
+<p>Admin: <%= @employee.is_admin ? "Yes" : "No" %></p>
+
+<%= link_to 'Edit', edit_employee_edit_path(@employee) %> |
+<%= link_to 'Back', employee_edits_path %>
