@@ -1,11 +1,46 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-9">
-      Your Info
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          Your Info
+        </div>
+        <div class="panel-body">
+          <dl>
+            <dt>Name</dt>
+            <dd>Info</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          Search
+        </div>
+        <div class="panel-body">
+
+        </div>
+      </div>
     </div>
 
     <div class="col-md-3">
-      Leaderboard
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <%= @date.strftime('%B %Y') %> Leaderboard
+        </div>
+        <div class="panel-body">
+          &nbsp;
+        </div>
+      </div>
+
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          Last Month's Winner
+        </div>
+        <div class="panel-body">
+          VariQ
+        </div>
+      </div>
     </div>
   </div>
 </div>
