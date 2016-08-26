@@ -9,3 +9,23 @@
     }
   }
 }
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+  font-family: FontAwesome;
+  content: "\f006"
+}
+
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+  font-family: FontAwesome;
+  content: "\f005";
+  position: absolute;
+}

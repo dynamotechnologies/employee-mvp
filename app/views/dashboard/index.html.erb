@@ -11,7 +11,7 @@
             <dt><%= t('dashboard.profile.name') %></dt>
             <dd><%= employee.first_name %> <%= employee.last_name %></dd>
             <dt><%= t('dashboard.profile.kudos.balance') %></dt>
-            <dd><%= employee.kudo_balance %></dd>
+            <dd data-kudo-balance-id="<%= employee.id %>"><%= employee.kudo_balance %></dd>
             <dt><%= t('dashboard.profile.kudos.received') %></dt>
             <dd><%= employee.kudos_received %></dd>
           </dl>
@@ -38,19 +38,32 @@
           <% end %>
 
           <div class="panel">
-            <table >
+            <table>
               <thead>
               <th>First Name</th>
               <th>Last Name</th>
               <th>Kudos</th>
+              <th></th>
               </thead>
               <tbody>
               <% @employees.each do |employee| %>
-                <tr>
-                  <td><%= employee.first_name %></td>
-                  <td><%= employee.last_name %></td>
-                  <td><%= employee.kudos_received %></td>
-                </tr>
+                  <tr>
+                    <td><%= employee.first_name %></td>
+                    <td><%= employee.last_name %></td>
+                    <td data-kudos-received-id="<%= employee.id %>"><%= employee.kudos_received %></td>
+                    <td>
+                      <div class="rating">
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                      </div>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#kudosModal" data-employee-id="<%= employee.id %>">
+                        Give Kudos
+                      </button>
+                    </td>
+                  </tr>
               <% end %>
               </tbody>
             </table>
@@ -80,3 +93,45 @@
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="kudosModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="form">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" onclick="give()">Give</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var receiverId;
+  $('#kudosModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget);
+    receiverId = button.data('employee-id');
+  });
+
+  function give() {
+    $.ajax({
+      type: 'POST',
+      url: '/kudos',
+      dataType: 'json',
+      data: 'to=' + receiverId,
+      success: function (data) {
+        $('*[data-kudo-balance-id="' + <%= current_employee.id %> +'"]').html(data.balance);
+        $('*[data-kudos-received-id="' + data.to.id + '"]').html(data.to.kudos_received);
+        $('#kudosModal').modal('hide');
+      }
+    });
+  }
+</script>
