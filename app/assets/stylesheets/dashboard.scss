@@ -9,3 +9,32 @@
     }
   }
 }
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+
+  span {
+    font-size: 2em;
+    display: inline-block;
+    position: relative;
+    width: 1.1em;
+
+    &:before {
+      font-family: FontAwesome;
+      content: "\f006"
+    }
+
+    &:hover:before, &:hover ~ span:before {
+      font-family: FontAwesome;
+      content: "\f005";
+      color: #FFD700;
+    }
+  }
+}
+
+
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+
+}

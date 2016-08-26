@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/health_check', to: redirect('/health_check.html')
+
   resources :employee_edits
   devise_for :employees, controllers: {registrations: 'registrations'}
 
@@ -12,6 +14,8 @@ Rails.application.routes.draw do
   get 'feedback/show'
 
   get 'dashboard' => 'dashboard#index', as: 'dashboard'
+
+  post 'kudos' => 'kudos#give', as: 'kudos'
 
   get 'leaderboard' => 'leaderboard#index', as: 'leaderboard'
 

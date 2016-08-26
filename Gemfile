@@ -38,7 +38,7 @@ gem 'paperclip', '~> 5.0.0'
 
 # For Styling
 gem 'bootstrap-sass'
-
+gem 'font-awesome-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
