@@ -1,14 +1,19 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-9">
-      <div class="panel panel-primary">
+      <div class="panel panel-primary profile">
+        <% employee = current_employee %>
         <div class="panel-heading">
-          Your Info
+          <%= t('dashboard.profile.header') %>
         </div>
         <div class="panel-body">
-          <dl>
-            <dt>Name</dt>
-            <dd>Info</dd>
+          <dl class="dl-horizontal">
+            <dt><%= t('dashboard.profile.name') %></dt>
+            <dd><%= employee.first_name %> <%= employee.last_name %></dd>
+            <dt><%= t('dashboard.profile.kudos.balance') %></dt>
+            <dd><%= employee.kudo_balance %></dd>
+            <dt><%= t('dashboard.profile.kudos.received') %></dt>
+            <dd><%= employee.kudos_received %></dd>
           </dl>
         </div>
       </div>
