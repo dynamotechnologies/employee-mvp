@@ -1,0 +1,2 @@
+#!/bin/bash
+docker run -it -d --name base-app -e POSTGRES_USER=base_app_dba -e POSTGRES_PASSWORD=p2ssw0rd -e POSTGRES_DB=base_app -p 5432:5432 postgres:latest

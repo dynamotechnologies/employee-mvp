@@ -1,0 +1,57 @@
+.blue-bar{
+  display: block;
+  background-color: $medium-blue;
+  height: 24px;
+  z-index: 1;
+}
+
+.topbar-container{
+  padding: 4px 75px 0 75px;
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.usa-icon{
+  padding-top: -2px;
+  margin-right: 5px;
+}
+
+.navbar{
+  background-color: #ffffff;
+  margin-bottom: 0;
+  border-radius: 0;
+
+}
+
+.navbar-fixed-top{
+  top: 24px;
+  display: block;
+}
+
+.navbar-brand{
+  color: $primary-red !important;
+  font-weight: bold;
+
+  .secondary-brand{
+    color: $dark-blue;
+  }
+}
+
+
+@media (max-width: $viewport-xs) {
+  .topbar-container{ padding: 4px 20px 0 20px;}
+
+}
+
+@media (min-width: $viewport-xs) {
+
+  .navbar-default .navbar-nav > .active > a {
+    background-color: transparent;
+    border: solid $light-grey thin;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-top: 13px;
+  }
+
+}

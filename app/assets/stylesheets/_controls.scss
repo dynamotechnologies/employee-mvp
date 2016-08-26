@@ -1,0 +1,102 @@
+textarea{
+  display: block;
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 12px;
+}
+
+.block-button{
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.padding-left-10{
+  padding-left: 10px;
+}
+
+.no-padding-right{
+  padding-right: 0;
+}
+
+table{
+  width: 100%;
+
+}
+
+thead{
+  background-color:$lighter-blue;
+  color: #ffffff;
+}
+
+th{
+  padding: 5px;
+}
+
+td{
+  padding: 5px;
+  border-bottom: solid thin $light-grey;
+}
+
+.alert:empty {
+  display: none;
+}
+
+@media (max-width: $viewport-xs) {
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+    border-radius: 10px;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr { border: 1px solid #ccc; margin-bottom: 40px;}
+
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: auto;
+    padding-right: auto;
+    padding-top: 40px;
+    padding-bottom: 10px;
+    text-align: center;
+
+    input{
+      border-color: $light-grey;
+    }
+  }
+
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    display: block;
+    width: 100%;
+    /* Top/left values mimic padding */
+    top: 0px;
+    left: 0px;
+    min-height: 10px;
+    padding: 4px 0px;
+    white-space: nowrap;
+    background-color: $lighter-blue;
+    color: #ffffff;
+  }
+
+  td:nth-of-type(1):before { content: "Name"; -webkit-border-radius: 5px 5px 0px 0px;}
+  td:nth-of-type(2):before { content: "Description"; }
+  td:nth-of-type(3):before { content: "Thumbnail"; }
+  td:nth-of-type(4):before { content: "Price"; }
+  td:nth-of-type(5):before { content: "Quantity"; }
+}
+
+
+
+
+

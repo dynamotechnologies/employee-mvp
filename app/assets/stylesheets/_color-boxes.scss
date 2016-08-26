@@ -1,0 +1,53 @@
+.color-box{
+  height: 40px;
+  display: block;
+}
+
+.primary-blue {
+  background-color: $lighter-blue;
+}
+
+.secondary-blue {
+  background-color: $medium-blue;
+}
+
+.dark-blue{
+  background-color: $dark-blue;
+}
+
+.light-accent-blue {
+  background-color: $lightest-blue;
+}
+
+.primary-red {
+  background-color: $primary-red;
+}
+
+.secondary-red {
+  background-color: $secondary-red;
+}
+
+.alert-yellow {
+  background-color: $primary-yellow;
+}
+
+.confirm-green {
+  background-color: $primary-green;
+}
+
+.background-grey {
+  background-color: $lightest-grey;
+}
+
+.footer-text {
+  background-color: $dark-grey;
+}
+
+.dark-accent-grey {
+  background-color: $medium-grey;
+}
+
+.light-accent-grey {
+  background-color: $light-grey;
+}
+
