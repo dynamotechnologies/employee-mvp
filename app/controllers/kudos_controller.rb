@@ -3,7 +3,8 @@ class KudosController < ApplicationController
 
   def give
     to = Employee.find(params[:to])
-    give_kudos(current_employee, to, 2)
+    amount = params[:amount].to_f
+    give_kudos(current_employee, to, amount)
 
 
     respond_to do |format|
