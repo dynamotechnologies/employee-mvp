@@ -17,7 +17,7 @@ em1 = Employee.create(
             is_admin: true,
             is_active: true,
             kudo_balance: 10,
-            kudos_received: 0
+            kudos_received: 4
         },
         {
             username: 'max',
@@ -29,7 +29,7 @@ em1 = Employee.create(
             is_admin: false,
             is_active: true,
             kudo_balance: 10,
-            kudos_received: 0
+            kudos_received: 2
         },
         {
             username: 'chris',
@@ -44,3 +44,23 @@ em1 = Employee.create(
             kudos_received: 0
         }
     ])
+
+ks = KudoTransaction.create(
+    [
+        {
+            from_id: 3,
+            to_id: 1,
+            amount: 3,
+        },
+        {
+            from_id: 2,
+            to_id: 1,
+            amount: 1,
+        },
+        {
+            from_id: 1,
+            to_id: 2,
+            amount: 2,
+        }
+    ]
+)
