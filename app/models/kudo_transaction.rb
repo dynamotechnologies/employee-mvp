@@ -1,0 +1,2 @@
+class KudoTransaction < ApplicationRecord
+end
