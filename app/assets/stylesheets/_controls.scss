@@ -52,6 +52,16 @@ td{
   }
 }
 
+.main-search{
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.input-group-btn{
+  width: 1% !important;
+}
+
+
 
 @media (max-width: $viewport-xs) {
 
@@ -100,9 +110,9 @@ td{
     color: #ffffff;
   }
 
-  td:nth-of-type(1):before { content: "Name"; -webkit-border-radius: 5px 5px 0px 0px;}
-  td:nth-of-type(2):before { content: "Description"; }
-  td:nth-of-type(3):before { content: "Thumbnail"; }
+  td:nth-of-type(1):before { content: "First Name"; -webkit-border-radius: 5px 5px 0px 0px;}
+  td:nth-of-type(2):before { content: "Last Name"; }
+  td:nth-of-type(3):before { content: "Kudos"; }
   td:nth-of-type(4):before { content: "Price"; }
   td:nth-of-type(5):before { content: "Quantity"; }
 }
