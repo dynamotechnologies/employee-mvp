@@ -5,6 +5,13 @@
   z-index: 1;
 }
 
+.notice-bar{
+  display: block;
+  background-color: $primary-green;
+  height: 24px;
+  z-index: 1;
+}
+
 .topbar-container{
   padding: 4px 75px 0 75px;
   color: #ffffff;
