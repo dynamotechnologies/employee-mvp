@@ -2,5 +2,4 @@
 <% if current_employee && current_employee.is_admin %>
   <%= link_to "Edit Employees", employee_edits_path %>
 <% end %>
-<ul>
-</ul>
+<%= link_to "This Month's Leaderboard", leaderboard_path %>

@@ -1,0 +1,8 @@
+<table>
+  <% @employees.each do |employee| %>
+  <tr>
+    <td><%= employee.kudos_received %></td>
+    <td><%= employee.first_name %> <%= employee.last_name %></td>
+  </tr>
+  <% end %>
+</table>
