@@ -35,6 +35,14 @@ RSpec.describe KudosController, type: :controller do
       expect(response.code).to eq("422")
       expect(resp['amount']).to eq(["is more than kudos remaining"])
     end
+
+    it "should allow kudo transfer for all their balance" do
+      sign_in @admin_user
+      post :give, params: {kudo_transaction: {to_id: @regular_user.id, amount: 100}, format: :json}
+
+      resp = JSON.parse(response.body)
+      expect(response.code).to eq("200")
+    end
   end
 
 end

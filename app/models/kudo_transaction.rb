@@ -10,9 +10,9 @@ class KudoTransaction < ApplicationRecord
 
   def give_kudos
     transaction do
+      self.save!
       from.deduct_kudos(self.amount).save!
       to.add_kudos(self.amount).save!
-      self.save!
     end
   end
 
@@ -27,7 +27,6 @@ class KudoTransaction < ApplicationRecord
 
   private
     def from_user_must_have_enough_kudos
-      e = Employee.find self.from_id
-      errors.add(:amount, "is more than kudos remaining") if e.kudo_balance < self.amount
+      errors.add(:amount, "is more than kudos remaining") if from && from.kudo_balance < self.amount
     end
 end
