@@ -11,32 +11,32 @@
   <% end %>
 
   <div class="field">
-    <%= label_tag 'Username' %>
+    <%= label_tag 'Username' %><br>
     <%= text_field_tag 'employee[username]', employee.username %>
   </div>
 
   <div class="field">
-    <%= label_tag :password %>
+    <%= label_tag :password %><br>
     <%= password_field_tag 'employee[password]' %>
   </div>
 
   <div class="field">
-    <%= label_tag :password_confirmation %>
+    <%= label_tag :password_confirmation %><br>
     <%= password_field_tag 'employee[password_confirmation]' %>
   </div>
 
   <div class="field">
-    <%= label_tag 'Email' %>
+    <%= label_tag 'Email' %><br>
     <%= email_field_tag 'employee[email]', employee.email %>
   </div>
 
   <div class="field">
-    <%= label_tag :first_name %>
+    <%= label_tag :first_name %><br>
     <%= text_field_tag 'employee[first_name]', employee.first_name %>
   </div>
 
   <div class="field">
-    <%= label_tag :last_name %>
+    <%= label_tag :last_name %><br>
     <%= text_field_tag 'employee[last_name]', employee.last_name %>
   </div>
 
