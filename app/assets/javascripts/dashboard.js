@@ -11,6 +11,7 @@
 
     kudosModal.on('hide.bs.modal', function(event) {
       $('.modal-error-message').html('');
+      $('.kudo-transaction-reason').val('');
     });
 
     kudosModal.on('show.bs.modal', function (event) {
@@ -33,7 +34,8 @@
         data: {
           kudo_transaction: {
             to_id: receiverId,
-            amount: amount
+            amount: amount,
+            reason: $('.kudo-transaction-reason').val()
           }
         },
       }).done(function(data){

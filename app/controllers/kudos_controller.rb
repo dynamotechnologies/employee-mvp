@@ -17,6 +17,6 @@ class KudosController < ApplicationController
     end
 
     def kudo_transaction_params
-      params.require(:kudo_transaction).permit(:to_id, :amount)
+      params.require(:kudo_transaction).permit(:to_id, :amount, :reason)
     end
 end
