@@ -1,3 +1,5 @@
+<%= render "common/panel", title: 'Employee Information' do %>
+
 <p id="notice"><%= notice %></p>
 
 <p>Username: <%= @employee.username %></p>
@@ -8,3 +10,5 @@
 
 <%= link_to 'Edit', edit_employee_edit_path(@employee) %> |
 <%= link_to 'Back', employee_edits_path %>
+
+<%end%>
