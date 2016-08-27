@@ -1,0 +1,35 @@
+<header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid main-container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to root_path, class: "navbar-brand" do %>
+          <%= image_tag "Galaxy-Logo-purple-web.png", class: "usa-icon", alt: "Galaxy Application Logo" %>
+        <% end %>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><span class="sr-only">(current)</span></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <% if employee_signed_in? %>
+              <%= link_to "Sign out", destroy_employee_session_path, method: :delete %>
+            <% else %>
+              <%= link_to "Sign in", new_employee_session_path %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
