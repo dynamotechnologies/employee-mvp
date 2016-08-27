@@ -1,11 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-em1 = Employee.create(
+Employee.create(
     [
         {
             username: 'alex',
@@ -17,7 +10,7 @@ em1 = Employee.create(
             is_admin: true,
             is_active: true,
             kudo_balance: 10,
-            kudos_received: 4
+            kudos_received: 7
         },
         {
             username: 'max',
@@ -29,7 +22,7 @@ em1 = Employee.create(
             is_admin: false,
             is_active: true,
             kudo_balance: 10,
-            kudos_received: 2
+            kudos_received: 3
         },
         {
             username: 'chris',
@@ -765,33 +758,36 @@ em1 = Employee.create(
         },
     ])
 
-ks = KudoTransaction.create(
+alex  = Employee.where(username: 'alex').first
+max   = Employee.where(username: 'max').first
+chris = Employee.where(username: 'chris').first
+KudoTransaction.create(
     [
         {
-            from_id: 3,
-            to_id: 1,
+            from: chris,
+            to: alex,
             amount: 3,
         },
         {
-            from_id: 2,
-            to_id: 1,
+            from: max,
+            to: alex,
             amount: 1,
         },
         {
-            from_id: 1,
-            to_id: 2,
+            from: alex,
+            to: max,
             amount: 2,
         },
         {
-            from_id: 1,
-            to_id: 2,
+            from: alex,
+            to: max,
             amount: 1,
             created_at: 1.month.ago,
             updated_at: 1.month.ago,
         },
         {
-            from_id: 2,
-            to_id: 1,
+            from: max,
+            to: alex,
             amount: 3,
             created_at: 1.month.ago,
             updated_at: 1.month.ago,

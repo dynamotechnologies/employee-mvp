@@ -22,6 +22,11 @@ rake db:migrate
 rake db:seed
 ```
 
+If you want to reset everything, make sure to run: 
+```
+rake db:migrate:reset
+```
+
 ### Tests
 This project uses rspec, so to run the test suite, just run 
 `rspec`
