@@ -1,11 +1,18 @@
 language: ruby
 rvm:
-- 2.3.1
+  - 2.3.1
 deploy:
   provider: heroku
   api_key:
     secure: XIK9xxrevfjUBU+Rvmje4ns6pFocTQXRTifkYQs4J5jJq72kT8xcfSks1sZOQMkjAQwWMDN+ohqO7V8HjRS+ky5cGSgcJpQoDwYV6jgF1OOLR5Ot66rKkvvKSOx/jXBOGCkm9xXYxwk9dRZnJ4Qgwqb9+JKFCD/JQsZ91Fn17NFq5M+OBC50y2QT/hkCuLPyl6c3mdJY3QjKLDKa+8u1dmSTfipAKu2yEAakX3YzclzfW0Rb0/0RNLzjeJEkjy7LUzjqihBdtgIw4pZ97VWvPOgo5RZvP8xy6R6GRULwEsrG+ViKfGd0stCe9DD6+pEhlpN+5zXBwQHG4PkSb6A1xFFsAURIw+J05j+Hu83xxmJU7C7lDhSOm8uy1l8otDFccFyfuCZ4cz6B13H0VJTAHUMaEwaRXRQRikfyP8R3ZPliaXpg3tKWl5v7bQo2pfYUMo4i+BOn4VsPpfrxhfaRrQQpqmfzh9X4Una8GSY9idxUsv+xidK65ew8ZzIl0bsJ2AhSDD9DTh4jjKgj+Ulpv9XfWa3V2Crpkywpok6F6U7eNqIrQCSH5dhGIQSLTopnthH6VGVuVGA8yGjBmneiMt1VcqtRH+yR1I2I1HXMX4qU4oXoE59uDCcBqcDjTq2RNwmBalK3SyRglNY/WsHORHhdkMky8KRr8QTR/sADBj4=
+  run:
+    - "rake db:migrate"
+    - "rake db:seed"
 services:
-- postgresql
+  - postgresql
 before_script:
-- psql -c 'create database base_app_test;' -U base_app_dba
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database base_app_test;' -U postgres
+test:
+  adapter: postgresql
+  database: base_app_test
