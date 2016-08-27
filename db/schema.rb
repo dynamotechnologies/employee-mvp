@@ -46,9 +46,9 @@ ActiveRecord::Schema.define(version: 20160827191017) do
     t.integer  "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "reason"
     t.integer  "month"
     t.integer  "year"
-    t.text     "reason"
     t.index ["from_id"], name: "index_kudo_transactions_on_from_id", using: :btree
     t.index ["month"], name: "index_kudo_transactions_on_month", using: :btree
     t.index ["to_id"], name: "index_kudo_transactions_on_to_id", using: :btree
