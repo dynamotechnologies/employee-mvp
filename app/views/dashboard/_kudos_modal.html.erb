@@ -1,4 +1,4 @@
-<div class="modal fade" id="kudosModal" tabindex="-1" role="dialog">
+<div class="modal fade kudos-modal" id="kudosModal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="form">
     <div class="modal-content">
       <div class="modal-header">
@@ -8,7 +8,15 @@
       </div>
       <div class="modal-body">
         <div class="modal-error-message text-danger"></div>
-        Give <span class="kudo-amount"></span> to <span class="kudo-receiver-name"></span>!
+
+        <div class="kudo-confirmation-message">
+          Give <span class="kudo-amount"></span> to <span class="kudo-receiver-name"></span>!
+        </div>
+
+        <div class="input-group">
+          <%= text_area_tag "kudo_transaction", "", cols: 40, rows: 5, class: "form-control kudo-transaction-reason", placeholder: "Reason" %>
+        </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
