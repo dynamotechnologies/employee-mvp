@@ -10,9 +10,17 @@
 
   <h1>Employees</h1>
 
+
+
   <%= form_tag employee_edits_path, method: "get", class: 'form-inline' do %>
-    <%= label_tag "search", "Search employees:" %>
-    <%= text_field_tag "search", "", class: "form-control", placeholder: "Three..Two..One..", value: @search_term %>
+    <div class="form-group main-search">
+      <div class="input-group main-search">
+        <%= text_field_tag "search", "", class: "form-control", placeholder: "Three..Two..One..", value: @search_term %>
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-primary">Search!</button>
+        </span>
+      </div>
+    </div>
   <% end %>
 
   <br>
@@ -60,25 +68,19 @@
   </div>
 
 
-<hr>
-    <div class="row">
+  <hr>
+  <div class="row">
 
-      <div class="col-md-2">
-        <button type="button" class="btn btn-primary">
-          <%= link_to 'Add New Employee', new_employee_edit_path %>
-        </button>
-      </div>
-
-      <div class="col-md-2">
-
-        <button type="button" class="btn btn-primary">
-          <%= link_to 'Back to Kudos dashboard', dashboard_path %>
-        </button>
-      </div>
-
-      <div class="col-md-8"></div>
-
+    <div class="col-md-2">
+      <%= link_to 'Add New Employee', new_employee_edit_path, class: "btn btn-primary" %>
     </div>
+
+    <div class="col-md-2">
+      <%= link_to 'Back to Kudos dashboard', dashboard_path, class: "btn btn-primary" %>
+    </div>
+
+    <div class="col-md-8"></div>
+
   </div>
 
 <% end %>

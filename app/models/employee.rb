@@ -5,6 +5,7 @@ class Employee < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :kudo_transactions, dependent: :destroy
+  has_many :monthly_rankings, dependent: :destroy
 
   def fullname
     [self.first_name, self.last_name].join(' ')
@@ -22,6 +23,10 @@ class Employee < ApplicationRecord
 
   def kudo_transactions_for_month(datetime = DateTime.current)
     KudoTransaction.created_between(datetime.beginning_of_month, datetime.end_of_month).for_receiver(self.id).order(created_at: :desc)
+  end
+
+  def current_rank
+    self.monthly_rankings.find {|ranking| ranking.month == Date.today().month }.try(:rank)
   end
 
   scope :active, -> { where(is_active: true) }
