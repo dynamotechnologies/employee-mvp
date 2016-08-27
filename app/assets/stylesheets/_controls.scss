@@ -118,11 +118,24 @@ td{
     color: #ffffff;
   }
 
-  td:nth-of-type(1):before { content: "First Name"; -webkit-border-radius: 5px 5px 0px 0px;}
-  td:nth-of-type(2):before { content: "Last Name"; }
-  td:nth-of-type(3):before { content: "Kudos"; }
-  td:nth-of-type(4):before { content: "Give Kudos"; }
-  td:nth-of-type(5):before { content: "Quantity"; }
+  .Give-Kudos-Table {
+    td:nth-of-type(1):before {
+      content: "First Name";
+      -webkit-border-radius: 5px 5px 0px 0px;
+    }
+    td:nth-of-type(2):before {
+      content: "Last Name";
+    }
+    td:nth-of-type(3):before {
+      content: "Kudos";
+    }
+    td:nth-of-type(4):before {
+      content: "Give Kudos";
+    }
+    td:nth-of-type(5):before {
+      content: "Quantity";
+    }
+  }
 
   .employee-table{
     td:nth-of-type(1):before { content: "Username"; -webkit-border-radius: 5px 5px 0px 0px;}
@@ -131,6 +144,10 @@ td{
     td:nth-of-type(4):before { content: "Email"; }
     td:nth-of-type(5):before { content: "Is Admin?"; }
   }
+}
+
+tfoot{
+  display: none;
 }
 
 
