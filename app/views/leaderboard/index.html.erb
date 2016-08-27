@@ -1,8 +1,16 @@
-<table>
-  <% @employees.each do |employee| %>
-  <tr>
-    <td><%= employee.kudos_received %></td>
-    <td><%= employee.first_name %> <%= employee.last_name %></td>
-  </tr>
-  <% end %>
-</table>
+<%= render "common/panel", title: 'Leaderboard' do %>
+  <div class="panel">
+    <table>
+      <thead>
+        <th>Kudos Received</th>
+        <th>Recipient</th>
+      </thead>
+      <% @employees.each do |employee| %>
+        <tr>
+          <td><%= employee.kudos_received %></td>
+          <td><%= employee.fullname %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+<% end %>

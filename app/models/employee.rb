@@ -22,10 +22,10 @@ class Employee < ApplicationRecord
 
   scope :active, -> { where(is_active: true) }
   scope :for_leaderboard, ->(limit=5) { order(kudos_received: :desc).active.limit(limit) }
-  scope :leader_this_month, -> do
-    Employee.where(id: KudoTransaction.max_receiver_for_month(DateTime.current).map(&:to_id))
+  scope :leader_this_month, ->(limit=1) do
+    Employee.where(id: KudoTransaction.max_receiver_for_month(DateTime.current, limit).map(&:to_id))
   end
-  scope :leader_last_month, -> do
-    Employee.where(id: KudoTransaction.max_receiver_for_month(DateTime.current - 1.month).map(&:to_id))
+  scope :leader_last_month, ->(limit=1) do
+    Employee.where(id: KudoTransaction.max_receiver_for_month(DateTime.current - 1.month, limit).map(&:to_id))
   end
 end

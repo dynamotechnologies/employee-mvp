@@ -1,0 +1,18 @@
+<%
+  # Mandatory:
+    # title - title on the top
+    # body - block that goes in the body
+
+  # Optional
+    # class - bootstrap color class
+
+  color_class = 'panel-primary' unless local_assigns.has_key? :color_class
+%>
+<div class="panel <%= color_class %>">
+  <div class="panel-heading">
+    <%= title %>
+  </div>
+  <div class="panel-body">
+    <%= yield %>
+  </div>
+</div>
