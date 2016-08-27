@@ -1,5 +1,6 @@
 # Employee MVP
 The best way to give kudos to all your favorite coworkers.
+[![Build Status](https://travis-ci.org/dynamotechnologies/employee-mvp.svg?branch=master)](https://travis-ci.org/dynamotechnologies/employee-mvp)
 
 ## Getting Started
 
