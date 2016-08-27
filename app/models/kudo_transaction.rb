@@ -8,15 +8,9 @@ class KudoTransaction < ApplicationRecord
   belongs_to :to, class_name: :Employee, foreign_key: "to_id"
 
   def give_kudos
-    amount = self.amount
-    
     transaction do
-      from.kudo_balance -= amount
-      from.save!
-
-      to.kudos_received += amount
-      to.save!
-
+      from.deduct_kudos(self.amount).save!
+      to.add_kudos(self.amount).save!
       self.save!
     end
   end

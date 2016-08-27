@@ -70,4 +70,18 @@ RSpec.describe Employee, type: :model do
       expect(employees[0].fullname).to eql("Joe2 Doe")
     end
   end
+
+  describe "Kudos" do
+    it "can deduct kudos" do
+      employee = Employee.new first_name: "James", last_name: "Dean", kudo_balance: 100, kudos_received: 50
+      employee.deduct_kudos 5
+      expect(employee.kudo_balance).to eql(95)
+    end
+
+    it "can add kudos" do
+      employee = Employee.new first_name: "James", last_name: "Dean", kudo_balance: 100, kudos_received: 50
+      employee.add_kudos 5
+      expect(employee.kudos_received).to eql(55)
+    end
+  end
 end
