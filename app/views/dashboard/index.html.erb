@@ -55,52 +55,57 @@
       </div>
 
       <%= render "common/panel", title: 'Give Kudos' do %>
-        <%= form_tag("/dashboard", method: "get", class: 'form-inline') do %>
+          <%= form_tag("/dashboard", method: "get", class: 'form-inline') do %>
               <span>Use the search box below to find your colleagues. The results of the search will display below the search box.
                 When you find the colleague you will be able to give them kudos!
               </span>
               <hr>
-          <div class="form-group main-search">
-            <div class="input-group main-search">
-              <input type="text" name="q" class="form-control" placeholder="Three..Two..One.." value="<%= params[:q] %>">
-              <span class="input-group-btn">
+              <div class="form-group main-search">
+                <div class="input-group main-search">
+                  <input type="text" name="q" class="form-control" placeholder="Three..Two..One.." value="<%= params[:q] %>">
+                  <span class="input-group-btn">
                 <button type="submit" class="btn btn-primary">Search!</button>
               </span>
-            </div>
-          </div>
-        <% end %>
+                </div>
+              </div>
+          <% end %>
           <hr>
 
           <p>You can give someone up to three Kudos, per person, per month
-                . Be careful, you only have a budget of 10 Kudos to give every month.</p>
+            . Be careful, you only have a budget of 10 Kudos to give every month.</p>
 
 
-        <div class="panel">
-          <table id="Give-Kudos-Table">
-            <thead>
+          <div class="panel">
+            <table id="Give-Kudos-Table">
+              <thead>
               <th>First Name</th>
               <th>Last Name</th>
               <th>Kudos</th>
               <th>Give Kudos</th>
-            </thead>
-            <tbody>
+              </thead>
+              <tbody>
               <% @employees.each do |employee| %>
-                <tr>
-                  <td><%= employee.first_name %></td>
-                  <td><%= employee.last_name %></td>
-                  <td data-kudo-received-id="<%= employee.id %>"><%= employee.kudos_received %></td>
-                  <td>
-                    <div class="rating">
-                      <span class="star" data-toggle="modal" data-target="#kudosModal" data-employee-id="<%= employee.id %>" data-employee-first-name="<%= employee.first_name %>" data-kudos-amount="3"></span>
-                      <span class="star" data-toggle="modal" data-target="#kudosModal" data-employee-id="<%= employee.id %>" data-employee-first-name="<%= employee.first_name %>" data-kudos-amount="2"></span>
-                      <span class="star" data-toggle="modal" data-target="#kudosModal" data-employee-id="<%= employee.id %>" data-employee-first-name="<%= employee.first_name %>" data-kudos-amount="1"></span>
-                    </div>
-                  </td>
-                </tr>
+                  <tr>
+                    <td><%= employee.first_name %></td>
+                    <td><%= employee.last_name %></td>
+                    <td data-kudo-received-id="<%= employee.id %>"><%= employee.kudos_received %></td>
+                    <td>
+                      <div class="rating">
+                        <span class="star" data-toggle="modal" data-target="#kudosModal" data-employee-id="<%= employee.id %>" data-employee-first-name="<%= employee.first_name %>" data-kudos-amount="3"></span>
+                        <span class="star" data-toggle="modal" data-target="#kudosModal" data-employee-id="<%= employee.id %>" data-employee-first-name="<%= employee.first_name %>" data-kudos-amount="2"></span>
+                        <span class="star" data-toggle="modal" data-target="#kudosModal" data-employee-id="<%= employee.id %>" data-employee-first-name="<%= employee.first_name %>" data-kudos-amount="1"></span>
+                      </div>
+                    </td>
+                  </tr>
               <% end %>
-            </tbody>
-          </table>
-        </div>
+              </tbody>
+              <tfoot>
+              <tr>
+              <%= paginate @employees %>
+              </tr>
+              </tfoot>
+            </table>
+          </div>
       <% end %>
     </div>
 
@@ -114,10 +119,10 @@
       <% end %>
 
       <% if current_employee && current_employee.is_admin %>
-        <%= render "common/panel", color_class: 'panel-info', title: "Administrator actions" do %>
-          <%= link_to "Manage Employees", employee_edits_path %>
-          <p>Reports</p>
-        <% end %>
+          <%= render "common/panel", color_class: 'panel-info', title: "Administrator actions" do %>
+              <%= link_to "Manage Employees", employee_edits_path %>
+              <p>Reports</p>
+          <% end %>
       <% end %>
     </div>
   </div>

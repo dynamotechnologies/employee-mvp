@@ -40,6 +40,7 @@ gem 'paperclip', '~> 5.0.0'
 # For Styling
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
+gem 'kaminari'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
