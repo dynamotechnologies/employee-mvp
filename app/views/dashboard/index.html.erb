@@ -130,7 +130,20 @@
 
     <div class="col-md-3">
       <%= render "common/panel", color_class: 'panel-success', title: "#{@date.strftime('%B %Y')} Leaderboard" do %>
-          <%= Employee.leader_this_month.first.try(:fullname) || "N/A" %>
+          <table id="leaderboard-table" class="table table-striped">
+            <thead>
+            <th>Rank</th>
+            <th>Employee</th>
+            </thead>
+            <tbody>
+            <% MonthlyRanking.by_month.limit(5).each do |ranking| %>
+                <tr>
+                  <td><%= ranking.rank %></td>
+                  <td><%= ranking.employee.fullname %></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
       <% end %>
 
       <%= render "common/panel", color_class: 'panel-success', title: "Last Month's Winner" do %>
