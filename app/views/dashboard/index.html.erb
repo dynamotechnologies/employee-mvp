@@ -76,35 +76,41 @@
 
 
           <div class="panel">
-            <table id="Give-Kudos-Table">
-              <thead>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Kudos</th>
-              <th>Give Kudos</th>
-              </thead>
-              <tbody>
-              <% @employees.each do |employee| %>
+            <% if !@employees.blank? %>
+                <table id="Give-Kudos-Table">
+                  <thead>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Kudos</th>
+                  <th>Give Kudos</th>
+                  </thead>
+                  <tbody>
+                  <% @employees.each do |employee| %>
+                      <tr>
+                        <td><%= employee.first_name %></td>
+                        <td><%= employee.last_name %></td>
+                        <td data-kudo-received-id="<%= employee.id %>"><%= employee.kudos_received %></td>
+                        <td>
+                          <div class="rating">
+                            <span class="star" data-toggle="modal" data-target="#kudosModal" data-employee-id="<%= employee.id %>" data-employee-first-name="<%= employee.first_name %>" data-kudos-amount="3"></span>
+                            <span class="star" data-toggle="modal" data-target="#kudosModal" data-employee-id="<%= employee.id %>" data-employee-first-name="<%= employee.first_name %>" data-kudos-amount="2"></span>
+                            <span class="star" data-toggle="modal" data-target="#kudosModal" data-employee-id="<%= employee.id %>" data-employee-first-name="<%= employee.first_name %>" data-kudos-amount="1"></span>
+                          </div>
+                        </td>
+                      </tr>
+                  <% end %>
+                  </tbody>
+                  <tfoot>
                   <tr>
-                    <td><%= employee.first_name %></td>
-                    <td><%= employee.last_name %></td>
-                    <td data-kudo-received-id="<%= employee.id %>"><%= employee.kudos_received %></td>
-                    <td>
-                      <div class="rating">
-                        <span class="star" data-toggle="modal" data-target="#kudosModal" data-employee-id="<%= employee.id %>" data-employee-first-name="<%= employee.first_name %>" data-kudos-amount="3"></span>
-                        <span class="star" data-toggle="modal" data-target="#kudosModal" data-employee-id="<%= employee.id %>" data-employee-first-name="<%= employee.first_name %>" data-kudos-amount="2"></span>
-                        <span class="star" data-toggle="modal" data-target="#kudosModal" data-employee-id="<%= employee.id %>" data-employee-first-name="<%= employee.first_name %>" data-kudos-amount="1"></span>
+                    <td colspan="4">
+                      <div class="text-center">
+                        <%= paginate @employees %>
                       </div>
                     </td>
                   </tr>
-              <% end %>
-              </tbody>
-              <tfoot>
-              <tr>
-              <%= paginate @employees %>
-              </tr>
-              </tfoot>
-            </table>
+                  </tfoot>
+                </table>
+            <% end %>
           </div>
       <% end %>
     </div>
