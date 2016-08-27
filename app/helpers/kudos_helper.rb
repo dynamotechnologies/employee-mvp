@@ -11,6 +11,8 @@ module KudosHelper
 
       to.kudos_received += amount
       to.save!
+
+      kudo.save
     end
   end
 

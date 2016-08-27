@@ -3,7 +3,13 @@ class KudosController < ApplicationController
   before_action :set_kudo_transaction
 
   def give
-    give_kudos @kudo_transaction
+    respond_to do |format|
+      if give_kudos(@kudo_transaction)
+        format.json
+      else
+        format.json { render json: @kudo_transaction.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private 
