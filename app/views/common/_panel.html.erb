@@ -7,8 +7,9 @@
     # class - bootstrap color class
 
   color_class = 'panel-primary' unless local_assigns.has_key? :color_class
+
 %>
-<div class="panel <%= color_class %>">
+<div class="panel <%= color_class %>" id ="Panel-<%= title %>">
   <div class="panel-heading">
     <h1 class="panel-title">
     <%= title %>
