@@ -61,6 +61,20 @@ ks = KudoTransaction.create(
             from_id: 1,
             to_id: 2,
             amount: 2,
+        },
+        {
+            from_id: 1,
+            to_id: 2,
+            amount: 1,
+            created_at: 1.month.ago,
+            updated_at: 1.month.ago,
+        },
+        {
+            from_id: 2,
+            to_id: 1,
+            amount: 3,
+            created_at: 1.month.ago,
+            updated_at: 1.month.ago,
         }
     ]
 )
