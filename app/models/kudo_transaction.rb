@@ -1,5 +1,8 @@
 class KudoTransaction < ApplicationRecord
-  validate :from_user_must_have_enough_kudos
+  validates :amount, presence: true
+  validates :from_id, presence: true
+  validates :to_id, presence: true
+  validate  :from_user_must_have_enough_kudos
 
   private 
     def from_user_must_have_enough_kudos
