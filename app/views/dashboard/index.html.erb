@@ -107,6 +107,7 @@
       <% if current_employee && current_employee.is_admin %>
         <%= render "common/panel", color_class: 'panel-info', title: "Administrator actions" do %>
           <%= link_to "Manage Employees", employee_edits_path %>
+          <p>Reports</p>
         <% end %>
       <% end %>
     </div>
