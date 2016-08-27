@@ -15,44 +15,48 @@
     <%= text_field_tag "search", "", class: "form-control", placeholder: "Three..Two..One..", value: @search_term %>
   <% end %>
 
+  <br>
+
   <div class="panel">
-    <table>
-      <thead>
-      <tr>
-        <th>Username</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th>Is Admin?</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @employees.each do |employee| %>
+    <% if @employees && @employees.length > 0 %>
+      <table>
+        <thead>
         <tr>
-          <td><%= employee.username %></td>
-          <td><%= employee.first_name %></td>
-          <td><%= employee.last_name %></td>
-          <td><%= employee.email %></td>
-          <td><%= employee.is_admin ? "Yes" : "No" %></td>
-          <td><%= link_to 'View Details', employee_edit_path(employee) %></td>
-          <td><%= link_to 'Edit', edit_employee_edit_path(employee) %></td>
-          <td><%= link_to 'Delete', employee_edit_path(employee), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          <th>Username</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Is Admin?</th>
+          <th></th>
+          <th></th>
+          <th></th>
         </tr>
-      <% end %>
-      </tbody>
-      <tfoot>
-      <tr>
-        <td colspan="4">
-          <div class="text-center">
-            <%= paginate @employees %>
-          </div>
-        </td>
-      </tr>
-      </tfoot>
-    </table>
+        </thead>
+        <tbody>
+        <% @employees.each do |employee| %>
+          <tr>
+            <td><%= employee.username %></td>
+            <td><%= employee.first_name %></td>
+            <td><%= employee.last_name %></td>
+            <td><%= employee.email %></td>
+            <td><%= employee.is_admin ? "Yes" : "No" %></td>
+            <td><%= link_to 'View Details', employee_edit_path(employee) %></td>
+            <td><%= link_to 'Edit', edit_employee_edit_path(employee) %></td>
+            <td><%= link_to 'Delete', employee_edit_path(employee), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          </tr>
+        <% end %>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="4">
+            <div class="text-center">
+              <%= paginate @employees %>
+            </div>
+          </td>
+        </tr>
+        </tfoot>
+      </table>
+    <% end %>
   </div>
 
   <br>
