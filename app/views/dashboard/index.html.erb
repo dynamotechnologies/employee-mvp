@@ -87,12 +87,12 @@
                   <tr>
                     <td><%= employee.first_name %></td>
                     <td><%= employee.last_name %></td>
-                    <td data-kudos-received-id="<%= employee.id %>"><%= employee.kudos_received %></td>
+                    <td data-kudo-received-id="<%= employee.id %>"><%= employee.kudos_received %></td>
                     <td>
                       <div class="rating">
-                        <span class="star" data-toggle="modal" data-target="#kudosModal" data-employee-id="<%= employee.id %>" data-kudos-amount="3"></span>
-                        <span class="star" data-toggle="modal" data-target="#kudosModal" data-employee-id="<%= employee.id %>" data-kudos-amount="2"></span>
-                        <span class="star" data-toggle="modal" data-target="#kudosModal" data-employee-id="<%= employee.id %>" data-kudos-amount="1"></span>
+                        <span class="star" data-toggle="modal" data-target="#kudosModal" data-employee-id="<%= employee.id %>" data-employee-first-name="<%= employee.first_name %>" data-kudos-amount="3"></span>
+                        <span class="star" data-toggle="modal" data-target="#kudosModal" data-employee-id="<%= employee.id %>" data-employee-first-name="<%= employee.first_name %>" data-kudos-amount="2"></span>
+                        <span class="star" data-toggle="modal" data-target="#kudosModal" data-employee-id="<%= employee.id %>" data-employee-first-name="<%= employee.first_name %>" data-kudos-amount="1"></span>
                       </div>
                     </td>
                   </tr>
@@ -127,27 +127,3 @@
 </div>
 
 <%= render "dashboard/kudos_modal" %>
-
-<script>
-  var receiverId;
-  var amount;
-  $('#kudosModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget);
-    receiverId = button.data('employee-id');
-    amount = button.data('kudos-amount');
-  });
-
-  function give() {
-    $.ajax({
-      type: 'POST',
-      url: '/kudos',
-      dataType: 'json',
-      data: 'to=' + receiverId + '&amount=' + amount,
-      success: function (data) {
-        $('*[data-kudo-balance-id="' + <%= current_employee.id %> +'"]').html(data.balance);
-        $('*[data-kudos-received-id="' + data.to.id + '"]').html(data.to.kudos_received);
-        $('#kudosModal').modal('hide');
-      }
-    });
-  }
-</script>

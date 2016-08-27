@@ -1,12 +1,16 @@
 module KudosHelper
 
-  def give_kudos(from, to, kudos)
+  def give_kudos(kudo)
+    from = Employee.find kudo.from_id
+    to = Employee.find kudo.to_id
+    amount = kudo.amount
+    
     Employee.transaction do
-      from.kudo_balance -= kudos
-      from.save()
+      from.kudo_balance -= amount
+      from.save!
 
-      to.kudos_received += kudos
-      to.save()
+      to.kudos_received += amount
+      to.save!
     end
   end
 
