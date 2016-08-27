@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   get 'leaderboard' => 'leaderboard#index', as: 'leaderboard'
 
-  root to: "home#index"
+  root to: 'dashboard#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
