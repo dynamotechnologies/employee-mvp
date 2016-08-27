@@ -1,46 +1,67 @@
+<script>
+  $("clear-search").on("click", function() {
+    $("search-text").val("")
+  })
+</script>
+
 <%= render "common/panel", title: 'Admin Dashboard' do %>
 
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
+  <h1>Employees</h1>
 
+  <%= form_tag employee_edits_path, method: "get", class: 'form-inline' do %>
+    <%= label_tag "search", "Search employees:" %>
+    <%= text_field_tag "search", "", class: "form-control", placeholder: "Three..Two..One..", value: @search_term %>
+  <% end %>
 
-<h1>Employees</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Admin?</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @employees.each do |employee| %>
+  <div class="panel">
+    <table>
+      <thead>
       <tr>
-        <td><%= employee.username %></td>
-        <td><%= employee.first_name %></td>
-        <td><%= employee.last_name %></td>
-        <td><%= employee.email %></td>
-        <td><%= employee.is_admin ? "Yes" : "No" %></td>
-        <td><%= link_to 'View Details', employee_edit_path(employee) %></td>
-        <td><%= link_to 'Edit', edit_employee_edit_path(employee) %></td>
-        <td><%= link_to 'Delete', employee_edit_path(employee), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Username</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Is Admin?</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      </thead>
+      <tbody>
+      <% @employees.each do |employee| %>
+        <tr>
+          <td><%= employee.username %></td>
+          <td><%= employee.first_name %></td>
+          <td><%= employee.last_name %></td>
+          <td><%= employee.email %></td>
+          <td><%= employee.is_admin ? "Yes" : "No" %></td>
+          <td><%= link_to 'View Details', employee_edit_path(employee) %></td>
+          <td><%= link_to 'Edit', edit_employee_edit_path(employee) %></td>
+          <td><%= link_to 'Delete', employee_edit_path(employee), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        </tr>
+      <% end %>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="4">
+          <div class="text-center">
+            <%= paginate @employees %>
+          </div>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
 
-<br>
+  <br>
 
-<%= link_to 'New Employee Edit', new_employee_edit_path %>
+  <%= link_to 'New Employee Edit', new_employee_edit_path %>
 
-<br>
+  <br>
 
-<%= link_to 'Back to dashboard', dashboard_path %>
+  <%= link_to 'Back to dashboard', dashboard_path %>
 
   </div>
 
