@@ -36,7 +36,7 @@ RSpec.describe Employee, type: :model do
   end
 
   describe "Full name" do
-    it "returns only five" do
+    it "returns the correct full name" do
       employee = Employee.new first_name: "James", last_name: "Dean"
       expect(employee.fullname).to eql("James Dean")
     end
