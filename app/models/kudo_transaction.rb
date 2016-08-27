@@ -16,6 +16,7 @@ class KudoTransaction < ApplicationRecord
     end
   end
 
+  scope :for_receiver, ->(user_id) { where(to_id: user_id) }
   scope :created_between, ->(start_date, end_date) { where("created_at >= ? AND created_at <= ?", start_date, end_date )}
   scope :max_receiver_for_month, ->(datetime, limit=1) do
     created_between(datetime.beginning_of_month, datetime.end_of_month)

@@ -20,6 +20,10 @@ class Employee < ApplicationRecord
     self
   end
 
+  def kudo_transactions_for_month(datetime = DateTime.current)
+    KudoTransaction.created_between(datetime.beginning_of_month, datetime.end_of_month).for_receiver(self.id).order(created_at: :desc)
+  end
+
   scope :active, -> { where(is_active: true) }
   scope :for_leaderboard, ->(limit=5) { order(kudos_received: :desc).active.limit(limit) }
   scope :leader_this_month, ->(limit=1) do

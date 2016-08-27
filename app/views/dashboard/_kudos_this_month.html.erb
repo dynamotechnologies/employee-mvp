@@ -1,0 +1,24 @@
+<%
+  # Mandatory:
+    # kudo_transactions - list of kudo transactions this month
+%>
+<%= render "common/panel", title: 'Kudos Received This Month' do %>
+  <div class="panel">
+    <table>
+      <thead>
+        <th>Date Time</th>
+        <th>Kudos</th>
+        <th>Reason</th>
+      </thead>
+      <tbody>
+        <% kudo_transactions.each do |kudo_transaction| %>
+          <tr>
+            <td><%= pretty_datetime kudo_transaction.created_at %></td>
+            <td><%= kudo_transaction.amount %></td>
+            <td><%= kudo_transaction.reason %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
