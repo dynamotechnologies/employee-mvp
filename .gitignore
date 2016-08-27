@@ -19,6 +19,11 @@
 /.idea
 *.iml
 out
+.DS_Store
 
+# ruby version manager files
 .ruby-version
 .ruby-gemset
+
+# code coverage output
+coverage

@@ -25,6 +25,12 @@ rake db:seed
 This project uses rspec, so to run the test suite, just run 
 `rspec`
 
+This will automatically generate a code coverage report, `index.html` found in the `coverage` directory in your project root. 
+
+### Development
+In addition to making sure our code coverage is high, also run `rubocop` to get suggestions on potential code smells that you should clean up.
+
+
 ### Running the server
 ```
 rails server
