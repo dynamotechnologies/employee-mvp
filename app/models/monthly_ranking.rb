@@ -1,0 +1,3 @@
+class MonthlyRanking < ApplicationRecord
+
+end
