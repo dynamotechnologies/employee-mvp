@@ -6,7 +6,13 @@ class EmployeeEditsController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.active
+    @search_term = params[:search]
+
+    @employees = Employee.none.page(params[:page])
+    unless @search_term.blank?
+      @employees = Employee.active.where("first_name ILIKE ? OR last_name ILIKE ?", "%#{@search_term}%", "%#{@search_term}%").
+          order(last_name: :asc, first_name: :asc).active.page(params[:page])
+    end
   end
 
   # GET /employees/1
