@@ -5,6 +5,7 @@ class Employee < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :kudo_transactions, dependent: :destroy
+  has_many :monthly_rankings, dependent: :destroy
 
   def fullname
     [self.first_name, self.last_name].join(' ')
@@ -18,6 +19,10 @@ class Employee < ApplicationRecord
   def add_kudos(amount)
     self.kudos_received += amount
     self
+  end
+
+  def current_rank
+    self.monthly_rankings.find {|ranking| ranking.month == Date.today().month }.try(:rank)
   end
 
   scope :active, -> { where(is_active: true) }

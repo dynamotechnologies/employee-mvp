@@ -11,7 +11,7 @@
         <div class="panel-body">
           <div class="row">
 
-            <div class="col-md-4">
+            <div class="col-md-3">
               <div class="panel panel-default">
                 <div class="panel-body center-content">
                   <span class="glyphicon glyphicon-user glyphicon-profile"></span>
@@ -24,7 +24,7 @@
               </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
               <div class="panel panel-default">
                 <div class="panel-body center-content">
                   <div class="glyphicon glyphicon-ok glyphicon-profile"></div>
@@ -37,7 +37,7 @@
               </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
               <div class="panel panel-default">
                 <div class="panel-body center-content">
                   <span class="glyphicon glyphicon-star glyphicon-profile"></span>
@@ -45,6 +45,19 @@
                   <dl>
                     <dt><%= t('dashboard.profile.kudos.balance') %></dt>
                     <dd data-kudo-balance-id="<%= employee.id %>"><%= employee.kudo_balance %></dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="panel panel-default">
+                <div class="panel-body center-content">
+                  <span class="glyphicon glyphicon-stats glyphicon-profile"></span>
+                  <hr>
+                  <dl>
+                    <dt><%= t('dashboard.profile.kudos.rank') %></dt>
+                    <dd><%= employee.current_rank %></dd>
                   </dl>
                 </div>
               </div>
