@@ -59,14 +59,26 @@
     <% end %>
   </div>
 
-  <br>
 
-  <%= link_to 'New Employee Edit', new_employee_edit_path %>
+<hr>
+    <div class="row">
 
-  <br>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-primary">
+          <%= link_to 'Add New Employee', new_employee_edit_path %>
+        </button>
+      </div>
 
-  <%= link_to 'Back to dashboard', dashboard_path %>
+      <div class="col-md-2">
 
+        <button type="button" class="btn btn-primary">
+          <%= link_to 'Back to Kudos dashboard', dashboard_path %>
+        </button>
+      </div>
+
+      <div class="col-md-8"></div>
+
+    </div>
   </div>
 
 <% end %>
