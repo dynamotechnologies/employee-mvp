@@ -26,7 +26,8 @@ class Employee < ApplicationRecord
   end
 
   def current_rank
-    self.monthly_rankings.find {|ranking| ranking.month == Date.today().month }.try(:rank)
+    today = Date.today
+    self.monthly_rankings.by_month(today.month, today.year).first.try(:rank)
   end
 
   scope :active, -> { where(is_active: true) }
