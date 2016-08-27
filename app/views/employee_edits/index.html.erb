@@ -9,6 +9,9 @@
   <p id="notice"><%= notice %></p>
 
   <h1>Employees</h1>
+    <span>Use the search box below to search for emloyees. When you find the employee you are looking for, you will be able to manage
+    their profile.</span>
+    <hr>
 
 
 
@@ -27,7 +30,7 @@
 
   <div class="panel">
     <% if @employees && @employees.length > 0 %>
-      <table>
+      <table class="employee-table" id="employee-table">
         <thead>
         <tr>
           <th>Username</th>
