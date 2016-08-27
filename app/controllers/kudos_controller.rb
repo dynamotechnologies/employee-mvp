@@ -1,18 +1,17 @@
 class KudosController < ApplicationController
   include KudosHelper
   before_action :set_kudo_transaction
+  rescue_from ActiveRecord::RecordInvalid, with: :show_errors
 
   def give
-    respond_to do |format|
-      if give_kudos(@kudo_transaction)
-        format.json
-      else
-        format.json { render json: @kudo_transaction.errors, status: :unprocessable_entity }
-      end
-    end
+    give_kudos(@kudo_transaction)
   end
 
   private 
+    def show_errors(exception)
+      render json: exception.record.errors, status: :unprocessable_entity
+    end
+
     def set_kudo_transaction
       @kudo_transaction = KudoTransaction.new(kudo_transaction_params)
       @kudo_transaction.from_id = current_employee.id
