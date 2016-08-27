@@ -14,13 +14,13 @@ RSpec.describe KudoTransaction, type: :model do
    }
 
   it "can create a valid kudo transaction" do
-    kudo = KudoTransaction.new from_id: admin_user.id, to_id: regular_user.id, amount: 5
+    kudo = KudoTransaction.new from: admin_user, to: regular_user, amount: 5
     expect(Employee).to receive(:find).and_return(admin_user)
     expect(kudo).to be_valid
   end
 
   it "must have a from id" do
-    kudo = KudoTransaction.new from_id: admin_user.id, to_id: regular_user.id, amount: 5
+    kudo = KudoTransaction.new from: admin_user, to: regular_user, amount: 5
     expect(Employee).to receive(:find).and_return(admin_user)
     expect(kudo).to be_valid
 
@@ -31,7 +31,7 @@ RSpec.describe KudoTransaction, type: :model do
   end
 
   it "must have a to id" do
-    kudo = KudoTransaction.new from_id: admin_user.id, to_id: regular_user.id, amount: 5
+    kudo = KudoTransaction.new from: admin_user, to: regular_user, amount: 5
     expect(Employee).to receive(:find).and_return(admin_user)
     expect(kudo).to be_valid
 
@@ -42,7 +42,7 @@ RSpec.describe KudoTransaction, type: :model do
   end
 
   it "must have enough balance to give kudos" do
-    kudo = KudoTransaction.new from_id: admin_user.id, to_id: regular_user.id, amount: 5
+    kudo = KudoTransaction.new from: admin_user, to: regular_user, amount: 5
     expect(Employee).to receive(:find).and_return(admin_user)
     expect(kudo).to be_valid
 
@@ -53,7 +53,7 @@ RSpec.describe KudoTransaction, type: :model do
   end
 
   it "will allow giving all kudos to someone" do
-    kudo = KudoTransaction.new from_id: admin_user.id, to_id: regular_user.id, amount: 5
+    kudo = KudoTransaction.new from: admin_user, to: regular_user, amount: 5
     expect(Employee).to receive(:find).and_return(admin_user)
     expect(kudo).to be_valid
 

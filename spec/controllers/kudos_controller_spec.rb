@@ -4,7 +4,7 @@ RSpec.describe KudosController, type: :controller do
   render_views
 
   before :each do
-     @regular_user = FactoryGirl.create(:employee,
+    @regular_user = FactoryGirl.create(:employee,
                                        username: "jdoe", email: "jdoe1@jdoe.jdoe",
                                        password: "secret", password_confirmation: "secret",
                                        first_name: "Joe1", last_name: "Doe", kudo_balance: 100, is_admin: false)

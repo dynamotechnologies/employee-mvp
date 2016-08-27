@@ -110,7 +110,7 @@
           <%= @date.strftime('%B %Y') %> Leaderboard
         </div>
         <div class="panel-body">
-          &nbsp;
+          <%= Employee.leader_this_month.first.try(:fullname) || "N/A" %>
         </div>
       </div>
 
@@ -119,7 +119,7 @@
           Last Month's Winner
         </div>
         <div class="panel-body">
-          VariQ
+          <%= Employee.leader_last_month.first.try(:fullname) || "N/A" %>
         </div>
       </div>
     </div>

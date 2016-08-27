@@ -1,10 +1,9 @@
 class KudosController < ApplicationController
-  include KudosHelper
   before_action :set_kudo_transaction
   rescue_from ActiveRecord::RecordInvalid, with: :show_errors
 
   def give
-    give_kudos(@kudo_transaction)
+    @kudo_transaction.give_kudos
   end
 
   private 
