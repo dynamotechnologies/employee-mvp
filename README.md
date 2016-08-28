@@ -42,3 +42,6 @@ In addition to making sure our code coverage is high, also run `rubocop` to get 
 rails server
 # then go to http://localhost:3000
 ```
+
+#### Sunil push - testing triggers
+
