@@ -664,18 +664,21 @@ KudoTransaction.create(
             to: alex,
             amount: 3,
             kudo_category: teamwork,
+            reason: 'Chris gives to alex'
         },
         {
             from: max,
             to: alex,
             amount: 1,
             kudo_category: improvement,
+            reason: 'Max gives to alex'
         },
         {
             from: alex,
             to: max,
             amount: 2,
             kudo_category: delivery,
+            reason: 'Alex gives to max'
         },
         {
             from: alex,
@@ -684,6 +687,7 @@ KudoTransaction.create(
             created_at: 1.month.ago,
             updated_at: 1.month.ago,
             kudo_category: experiment,
+            reason: 'Alex gives to max'
         },
         {
             from: max,
@@ -691,6 +695,7 @@ KudoTransaction.create(
             amount: 3,
             created_at: 1.month.ago,
             updated_at: 1.month.ago,
+            reason: 'Max gives to alex'
         }
     ]
 )

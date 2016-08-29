@@ -3,6 +3,8 @@
     <%= form_tag kudos_path, method: "get", class: 'form-inline' do %>
         <div class="form-group main-search">
           <div class="input-group main-search">
+
+              <%= select_tag(:category, options_from_collection_for_select(KudoCategory.all, :id, :name, params[:category]), class: 'form-control') %>
             <%= text_field_tag "reason", "", class: "form-control", id: "kudos-search", placeholder: "Search for Kudos Here..", value: params[:reason] %>
             <span class="input-group-btn">
           <button type="submit" class="btn btn-primary">Search!</button>
