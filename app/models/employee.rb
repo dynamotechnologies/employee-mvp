@@ -25,6 +25,7 @@ class Employee < ApplicationRecord
   end
 
   scope :active, -> { where(is_active: true) }
+  scope :active_users, -> { active.where(is_admin: false)}
   scope :for_leaderboard, ->(limit=5) { active.limit(limit) }
   scope :leader_this_month, ->(limit=1) do
     Employee.where(id: KudoTransaction.max_receiver_for_month(DateTime.current, limit).map(&:to_id))

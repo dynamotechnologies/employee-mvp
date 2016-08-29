@@ -8,7 +8,7 @@ class DashboardController < ApplicationController
       @date = Date.today
 
       @employees = Employee.none.page(params[:page])
-      @employees = Employee.where('first_name ILIKE ? OR last_name ILIKE ?', "%#{query}%", "%#{query}%").active.page(params[:page]) if !query.nil?
+      @employees = Employee.active_users.where('first_name ILIKE ? OR last_name ILIKE ?', "%#{query}%", "%#{query}%").active.page(params[:page]) if !query.nil?
 
       @kudo_transactions = current_employee.kudo_transactions_for_month
     end
