@@ -15,6 +15,10 @@ class Employee < ApplicationRecord
     KudoTransaction.created_between(datetime.beginning_of_month, datetime.end_of_month).for_receiver(self.id).order(created_at: :desc)
   end
 
+  def kudo_transactions_per_category(category)
+
+  end
+
   def current_rank
     today = Date.today
     self.monthly_rankings.by_month(today.month, today.year).first.try(:rank)

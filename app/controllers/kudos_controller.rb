@@ -1,8 +1,12 @@
 class KudosController < ApplicationController
-  before_action :set_kudo_transaction
+  before_action :set_kudo_transaction, only: [:create]
   rescue_from ActiveRecord::RecordInvalid, with: :show_errors
 
-  def give
+  def index
+
+  end
+
+  def create
     @kudo_transaction.give_kudos
   end
 

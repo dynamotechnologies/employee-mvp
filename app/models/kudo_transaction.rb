@@ -10,8 +10,6 @@ class KudoTransaction < ApplicationRecord
   def give_kudos
     transaction do
       self.save!
-      from.deduct_kudos(self.amount).save!
-      to.add_kudos(self.amount).save!
     end
   end
 

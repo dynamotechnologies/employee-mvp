@@ -7,6 +7,7 @@ class EmployeeEditsController < ApplicationController
   # GET /employees.json
   def index
     @search_term = params[:search]
+    puts params[:limit]
 
     @employees = Employee.none.page(params[:page])
     unless @search_term.blank?
