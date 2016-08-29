@@ -2,8 +2,7 @@ class KudoTransaction < ApplicationRecord
   validates :amount, presence: true
   validates :from_id, presence: true
   validates :to_id, presence: true
-  validates :reason, length: { maximum: 256 }
-  validate  :from_user_must_have_enough_kudos
+  validates :reason, length: {maximum: 256}
 
   belongs_to :from, class_name: :Employee, foreign_key: "from_id"
   belongs_to :to, class_name: :Employee, foreign_key: "to_id"
@@ -17,16 +16,12 @@ class KudoTransaction < ApplicationRecord
   end
 
   scope :for_receiver, ->(user_id) { where(to_id: user_id) }
-  scope :created_between, ->(start_date, end_date) { where("created_at >= ? AND created_at <= ?", start_date, end_date )}
+  scope :created_between, ->(start_date, end_date) { where("created_at >= ? AND created_at <= ?", start_date, end_date) }
   scope :max_receiver_for_month, ->(datetime, limit=1) do
     created_between(datetime.beginning_of_month, datetime.end_of_month)
-      .select("kudo_transactions.to_id, sum(kudo_transactions.amount) as month_total")
-      .group("kudo_transactions.to_id")
-      .order("month_total desc").limit(limit)
+        .select("kudo_transactions.to_id, sum(kudo_transactions.amount) as month_total")
+        .group("kudo_transactions.to_id")
+        .order("month_total desc").limit(limit)
   end
 
-  private
-    def from_user_must_have_enough_kudos
-      errors.add(:amount, "is more than kudos remaining") if from && from.kudo_balance < self.amount
-    end
 end
