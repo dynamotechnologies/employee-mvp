@@ -1,4 +1,14 @@
 <header>
+
+  <div class="notice-bar">
+    <span class="notice text-success"><%= notice %></span>
+  </div>
+
+  <div class="alert-bar">
+    <span class="alert text-danger"><%= alert %></span>
+  </div>
+
+
   <nav class="navbar navbar-default">
     <div class="container-fluid main-container">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -12,13 +22,18 @@
         <%= link_to root_path, class: "navbar-brand" do %>
           <%= image_tag "Galaxy-Logo-purple-web.png", class: "usa-icon", alt: "Galaxy Application Logo" %>
         <% end %>
+
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <% if current_employee && current_employee.is_admin %>
-            <li ><%= link_to 'Kudos Dashboard', dashboard_path %><span class="sr-only">(current)</span></li>
+            <li>
+
+              <%= link_to 'Kudos Dashboard', dashboard_path %>
+              <span class="sr-only">(current)</span>
+            </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Run Reports <span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -33,6 +48,7 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
+
           <li>
             <% if employee_signed_in? %>
               <%= link_to "Sign out", destroy_employee_session_path, method: :delete %>

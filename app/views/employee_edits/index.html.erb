@@ -9,7 +9,7 @@
   <p id="notice"><%= notice %></p>
 
   <h1>Employees</h1>
-    <span>Use the search box below to search for emloyees. When you find the employee you are looking for, you will be able to manage
+    <span><label for="employee-search">Use the search box below to search for emloyees.</label> When you find the employee you are looking for, you will be able to manage
     their profile.</span>
     <hr>
 
@@ -18,7 +18,7 @@
   <%= form_tag employee_edits_path, method: "get", class: 'form-inline' do %>
     <div class="form-group main-search">
       <div class="input-group main-search">
-        <%= text_field_tag "search", "", class: "form-control", placeholder: "Three..Two..One..", value: @search_term %>
+        <%= text_field_tag "search", "", class: "form-control", id:"employee-search", placeholder: "Search for Employees Here..", value: @search_term %>
         <span class="input-group-btn">
           <button type="submit" class="btn btn-primary">Search!</button>
         </span>

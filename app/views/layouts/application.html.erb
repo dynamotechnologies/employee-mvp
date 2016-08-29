@@ -7,6 +7,18 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script>
+      setTimeout(function () { 
+        $('div.notice-bar').fadeOut('fast'); 
+      }, 3000);
+
+      setTimeout(function () {
+        $('div.alert-bar').fadeOut('fast');
+      }, 3000);
+
+    </script>
+
   </head>
 
   <body>
@@ -14,10 +26,8 @@
 
     <main>
       <div class="content-container">
-        <div class="text-container">
 
-          <p class="notice text-success"><%= notice %></p>
-          <p class="alert text-danger"><%= alert %></p>
+        <div class="text-container">
 
           <%= yield %>
 

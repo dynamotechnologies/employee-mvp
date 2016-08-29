@@ -8,9 +8,25 @@
 .notice-bar{
   display: block;
   background-color: $primary-green;
-  height: 24px;
+  text-align: center;
   z-index: 1;
 }
+
+.notice{
+  color: #ffffff;
+}
+
+.alert-bar{
+  display: block;
+  background-color: $primary-yellow;
+  text-align: center;
+  z-index: 1;
+}
+
+.alert{
+  color: #000;
+}
+
 
 .topbar-container{
   padding: 4px 75px 0 75px;

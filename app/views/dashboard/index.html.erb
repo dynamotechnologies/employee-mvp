@@ -5,7 +5,9 @@
         <% employee = current_employee %>
 
         <div class="panel-heading">
-          <%= t('dashboard.profile.header') %>
+          <h1 class="panel-title">
+            <%= t('dashboard.profile.header') %>
+          </h1>
         </div>
 
         <div class="panel-body">
@@ -69,13 +71,15 @@
 
       <%= render "common/panel", title: 'Give Kudos' do %>
           <%= form_tag("/dashboard", method: "get", class: 'form-inline') do %>
-              <span>Use the search box below to find your colleagues. The results of the search will display below the search box.
+              <span><label for="colleague-search">Use the search box below to find your colleagues.</label> The results of the search will display below the search box.
                 When you find the colleague you will be able to give them kudos!
               </span>
               <hr>
               <div class="form-group main-search">
                 <div class="input-group main-search">
-                  <input type="text" name="q" class="form-control" placeholder="Three..Two..One.." value="<%= params[:q] %>">
+                  <input type="text" name="q" class="form-control" id="colleague-search"
+                         title="You can search by entering a full name or part of the name (wild-card search)"
+                         placeholder="Enter your colleagues name here..." value="<%= params[:q] %>">
                   <span class="input-group-btn">
                 <button type="submit" class="btn btn-primary">Search!</button>
               </span>
