@@ -1,0 +1,45 @@
+<%= render "common/panel", title: 'Kudo Transactions' do %>
+
+    <%= form_tag kudos_path, method: "get", class: 'form-inline' do %>
+        <div class="form-group main-search">
+          <div class="input-group main-search">
+            <%= text_field_tag "search", "", class: "form-control", id: "kudos-search", placeholder: "Search for Kudos Here..", value: @search_term %>
+            <span class="input-group-btn">
+          <button type="submit" class="btn btn-primary">Search!</button>
+        </span>
+          </div>
+        </div>
+    <% end %>
+
+    <div class="panel">
+      <% if !@kudos.blank? %>
+          <table class="Give-Kudos-Table" id="Give-Kudos-Table">
+            <thead>
+            <th>Date</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Category</th>
+            </thead>
+            <tbody>
+            <% @kudos.each do |kudo| %>
+                <tr>
+                  <td><%= kudo.created_at %></td>
+                  <td><%= kudo.from.fullname%></td>
+                  <td><%= kudo.to.fullname %></td>
+                  <td><%= kudo.kudo_category.name %></td>
+                </tr>
+            <% end %>
+            </tbody>
+            <tfoot>
+            <tr>
+              <td colspan="4">
+                <div class="text-center">
+                  <%= paginate @kudos %>
+                </div>
+              </td>
+            </tr>
+            </tfoot>
+          </table>
+      <% end %>
+    </div>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160829154922) do
+ActiveRecord::Schema.define(version: 20160829165127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,16 +37,24 @@ ActiveRecord::Schema.define(version: 20160829154922) do
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "kudo_categories", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "kudo_transactions", force: :cascade do |t|
     t.integer  "from_id"
     t.integer  "to_id"
     t.integer  "amount"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "month"
     t.integer  "year"
     t.text     "reason"
+    t.integer  "kudo_categories_id"
     t.index ["from_id"], name: "index_kudo_transactions_on_from_id", using: :btree
+    t.index ["kudo_categories_id"], name: "index_kudo_transactions_on_kudo_categories_id", using: :btree
     t.index ["month"], name: "index_kudo_transactions_on_month", using: :btree
     t.index ["to_id"], name: "index_kudo_transactions_on_to_id", using: :btree
     t.index ["year"], name: "index_kudo_transactions_on_year", using: :btree

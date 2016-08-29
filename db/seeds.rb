@@ -632,25 +632,50 @@ Employee.create(
         },
     ])
 
-alex   = Employee.where(email: 'alex@abc.com').first
-max   = Employee.where(email: 'max@abc.com').first
-chris   = Employee.where(email: 'chris@abc.com').first
+alex = Employee.where(email: 'alex@abc.com').first
+max = Employee.where(email: 'max@abc.com').first
+chris = Employee.where(email: 'chris@abc.com').first
+KudoCategory.create(
+    [
+        {
+            name: "Teamwork"
+        },
+        {
+            name: "Improvement"
+        },
+        {
+            name: "Delivery"
+        },
+        {
+            name: "Experiment"
+        }
+    ]
+)
+
+teamwork = KudoCategory.where(name: 'Teamwork').first
+improvement = KudoCategory.where(name: 'Improvement').first
+delivery = KudoCategory.where(name: 'Delivery').first
+experiment = KudoCategory.where(name: 'Experiment').first
+
 KudoTransaction.create(
     [
         {
             from: chris,
             to: alex,
             amount: 3,
+            kudo_category: teamwork,
         },
         {
             from: max,
             to: alex,
             amount: 1,
+            kudo_category: improvement,
         },
         {
             from: alex,
             to: max,
             amount: 2,
+            kudo_category: delivery,
         },
         {
             from: alex,
@@ -658,6 +683,7 @@ KudoTransaction.create(
             amount: 1,
             created_at: 1.month.ago,
             updated_at: 1.month.ago,
+            kudo_category: experiment,
         },
         {
             from: max,
