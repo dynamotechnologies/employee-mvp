@@ -36,6 +36,7 @@ gem 'devise', '~> 4.2.0'
 
 # For attachments
 gem 'paperclip', '~> 5.0.0'
+gem 'aws-sdk', '~> 2.3'
 
 # For Styling
 gem 'bootstrap-sass'
@@ -50,7 +51,8 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5.2'
   gem 'factory_girl_rails'
-  gem  'capybara'
+  gem 'capybara'
+  gem 'dotenv-rails'
 end
 
 group :development do

@@ -24,8 +24,10 @@ default: &default
 development:
   <<: *default
   database: base_app
-  username: base_app_dba
-  password: p2ssw0rd
+  # username: base_app_dba
+  # password: p2ssw0rd
+  username: root
+  password: root
   host: localhost
   port: 5432
 
@@ -33,8 +35,10 @@ development:
 test:
   <<: *default
   database: base_app_test
-  username: base_app_dba
-  password: p2ssw0rd
+  username: root
+  password: root
+  # username: base_app_dba
+  # password: p2ssw0rd
   host: localhost
   port: 5432
 
