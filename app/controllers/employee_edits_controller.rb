@@ -11,7 +11,7 @@ class EmployeeEditsController < ApplicationController
 
     @employees = Employee.none.page(params[:page])
     unless @search_term.blank?
-      @employees = Employee.where("first_name ILIKE ? OR last_name ILIKE ?", "%#{@search_term}%", "%#{@search_term}%").
+      @employees = Employee.active_users.where("first_name ILIKE ? OR last_name ILIKE ?", "%#{@search_term}%", "%#{@search_term}%").
           order(last_name: :asc, first_name: :asc).page(params[:page])
     end
   end
