@@ -14,18 +14,19 @@
         </div>
 
         <%= form_for @kudo_transaction, url: kudos_path, format: :json, remote: true, html: {"data-type": "json", multipart: true, id: 'kudos-transaction-form'} do |f| %>
-          <div class="input-group">
+          <div class="form-group">
             <%= f.label :attachment, "Kudo Attachment" %>
             <%= f.file_field(:attachment, class: "form-control kudo-transaction-attachment", id:"kudos-attachment") %>
             <%= f.hidden_field(:to_id, id: 'kudos-to_id-input') %>
             <%= f.hidden_field(:amount, value: 1) %>
             <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            <p class="help-block">Upload a file to really demonstrate why kudos are given.</p>
           </div>
-          <div class="input-group">
+          <div class="form-group">
             <%= f.label :kudo_categories_id, "Kudo Category" %>
             <%= f.collection_select(:kudo_categories_id, KudoCategory.all, :id, :name, {include_blank: true}, {class: 'form-control', style: ''}) %>
           </div>
-          <div class="input-group">
+          <div class="form-group">
             <%= f.label :reason %>
             <%= f.text_area(:reason, class: "form-control") %>
           </div>
