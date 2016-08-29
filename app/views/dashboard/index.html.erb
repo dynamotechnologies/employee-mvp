@@ -1,60 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-9">
-      <div class="panel panel-primary profile">
-        <% employee = current_employee %>
 
-        <div class="panel-heading">
-          <h1 class="panel-title">
-            <%= t('dashboard.profile.header') %>
-          </h1>
-        </div>
-
-        <div class="panel-body">
-          <div class="row">
-
-            <div class="col-md-3">
-              <div class="panel panel-default">
-                <div class="panel-body center-content">
-                  <span class="glyphicon glyphicon-user glyphicon-profile"></span>
-                  <hr>
-                  <dl>
-                    <dt><%= t('dashboard.profile.name') %></dt>
-                    <dd><%= employee.first_name %> <%= employee.last_name %></dd>
-                  </dl>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <div class="panel panel-default">
-                <div class="panel-body center-content">
-                  <span class="glyphicon glyphicon-star glyphicon-profile"></span>
-                  <hr>
-                  <dl>
-                    <dt><%= t('dashboard.profile.kudos.balance') %></dt>
-                    <dd data-kudo-balance-id="<%= employee.id %>"></dd>
-                  </dl>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <div class="panel panel-default">
-                <div class="panel-body center-content">
-                  <span class="glyphicon glyphicon-stats glyphicon-profile"></span>
-                  <hr>
-                  <dl>
-                    <dt><%= t('dashboard.profile.kudos.rank') %></dt>
-                    <dd><%= employee.current_rank %></dd>
-                  </dl>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
 
       <%= render "common/panel", title: 'Give Kudos' do %>
           <%= form_tag("/dashboard", method: "get", class: 'form-inline') do %>
@@ -115,10 +62,28 @@
           </div>
       <% end %>
 
-      <%= render "dashboard/kudos_this_month", kudo_transactions: @kudo_transactions %>
+     
     </div>
 
     <div class="col-md-3">
+      <%= render "common/panel", color_class: 'panel-success', title: "Profile" do %>
+          <% employee = current_employee %>
+              <div class="panel panel-default">
+                <div class="panel-body center-content">
+                  <span class="glyphicon glyphicon-user glyphicon-profile"></span>
+                  <br>
+                  <br>
+                  <p><strong>Your Current Badge</strong></p>
+                  <hr>
+                  <dl>
+                    <dt><%= t('dashboard.profile.name') %></dt>
+                    <dd><%= employee.first_name %> <%= employee.last_name %></dd>
+                  </dl>
+                </div>
+          </div>
+
+      <% end %>
+
       <%= render "common/panel", color_class: 'panel-success', title: "#{@date.strftime('%B %Y')} Leaderboard" do %>
           <table id="leaderboard-table" class="table table-striped leaderboard-table">
             <thead>
