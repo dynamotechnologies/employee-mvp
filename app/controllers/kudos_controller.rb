@@ -1,8 +1,14 @@
 class KudosController < ApplicationController
-  before_action :set_kudo_transaction
+  before_action :set_kudo_transaction, only: [:create]
   rescue_from ActiveRecord::RecordInvalid, with: :show_errors
 
-  def give
+  def index
+    params[:order] = params[:order] || 'created_at DESC'
+
+    @kudos = KudoTransaction.order(params[:order]).page(params[:pages]).limit(params[:limit])
+  end
+
+  def create
     @kudo_transaction.give_kudos
     respond_to do |format|
       format.html { redirect_to(dashboard_path) }
@@ -10,7 +16,7 @@ class KudosController < ApplicationController
     end
   end
 
-  private 
+  private
     def show_errors(exception)
       render json: exception.record.errors, status: :unprocessable_entity
     end

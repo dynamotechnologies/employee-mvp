@@ -2,12 +2,10 @@
   <div class="panel">
     <table>
       <thead>
-        <th>Kudos Received</th>
         <th>Recipient</th>
       </thead>
       <% @employees.each do |employee| %>
         <tr>
-          <td><%= employee.kudos_received %></td>
           <td><%= employee.fullname %></td>
         </tr>
       <% end %>

@@ -29,22 +29,31 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <% if current_employee && current_employee.is_admin %>
-            <li>
-
-              <%= link_to 'Kudos Dashboard', dashboard_path %>
-              <span class="sr-only">(current)</span>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Run
+                Reports <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Run Monthly Report</a></li>
+                <li><a href="#">Run User Report</a></li>
+              </ul>
             </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Run Reports <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Run Monthly Report</a></li>
-                  <li><a href="#">Run User Report</a></li>
-                </ul>
-              </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Run Reports <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Run Monthly Report</a></li>
+                <li><a href="#">Run User Report</a></li>
+              </ul>
+            </li>
           <% end %>
-
-
-
+          <% if current_employee %>
+            <li>
+              <%= link_to 'Help', help_path %>
+            </li>
+            <li>
+              <%= link_to 'FAQ', faq_path %>
+            </li>
+          <% end %>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">

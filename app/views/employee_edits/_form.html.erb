@@ -11,8 +11,8 @@
   <% end %>
 
   <div class="field">
-    <%= label_tag 'Username' %><br>
-    <%= text_field_tag 'employee[username]', employee.username %>
+    <%= label_tag 'Email' %><br>
+    <%= email_field_tag 'employee[email]', employee.email %>
   </div>
 
   <div class="field">
@@ -23,11 +23,6 @@
   <div class="field">
     <%= label_tag :password_confirmation %><br>
     <%= password_field_tag 'employee[password_confirmation]' %>
-  </div>
-
-  <div class="field">
-    <%= label_tag 'Email' %><br>
-    <%= email_field_tag 'employee[email]', employee.email %>
   </div>
 
   <div class="field">
@@ -43,6 +38,11 @@
   <div class="field">
     <%= check_box_tag 'employee[is_admin]', 1, employee.is_admin %>
     <%= label_tag 'employee[is_admin]', "Is Admin" %>
+  </div>
+
+  <div class="field">
+    <%= check_box_tag 'employee[is_active]', 1, employee.is_active %>
+    <%= label_tag 'employee[is_active]', "Is Active" %>
   </div>
 
   <div class="actions">

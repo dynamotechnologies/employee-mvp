@@ -2,11 +2,12 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>Username: <%= @employee.username %></p>
-<p>First Name: <%= @employee.first_name %></p>
-<p>Last Name: <%= @employee.last_name %></p>
 <p>Email: <%= @employee.email %></p>
+<p>First Name: <%= @employee.first_name %></p>
+<p>Middle Initial: <%= @employee.middle_initial %></p>
+<p>Last Name: <%= @employee.last_name %></p>
 <p>Admin: <%= @employee.is_admin ? "Yes" : "No" %></p>
+<p>Active: <%= @employee.is_active ? "Yes" : "No" %></p>
 
   <div class="row">
 

@@ -28,3 +28,9 @@ en:
         balance: Kudos to Give
         received: Kudos Received
         rank: Current Ranking
+  help:
+    header: Help
+    text: This is user help text
+  faq:
+    header: F.A.Q.
+    text: This is your FAQ text

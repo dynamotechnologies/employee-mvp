@@ -15,26 +15,6 @@ RSpec.describe Employee, type: :model do
     end
   end
 
-  describe "Employees for leaderboard" do
-    before :each do
-      6.times do |i|
-        FactoryGirl.create(:employee,
-                           username: "jdoe_#{i}", email: "jdoe_#{i}@jdoe.jdoe",
-                           password: "secret", password_confirmation: "secret",
-                           first_name: "Joe_#{i}", last_name: "Doe", kudos_received: i)
-      end
-      @employees = Employee.for_leaderboard
-    end
-
-    it "returns only five" do
-      expect(@employees.length).to eql(5)
-    end
-
-    it "returns them in the correct order" do
-      expect(@employees.map { |em| em.username }).to eql ["jdoe_5", "jdoe_4", "jdoe_3", "jdoe_2", "jdoe_1"]
-    end
-  end
-
   describe "Full name" do
     it "returns the correct full name" do
       employee = Employee.new first_name: "James", last_name: "Dean"
@@ -42,46 +22,4 @@ RSpec.describe Employee, type: :model do
     end
   end
 
-  describe "Leaders" do
-    before :each do
-      @user1 = FactoryGirl.create(:employee,
-                           username: "jdoe", email: "jdoe@jdoe.jdoe",
-                           password: "secret", password_confirmation: "secret",
-                           first_name: "Joe", last_name: "Doe", kudos_received: 100, kudo_balance: 5)
-
-      @user2 = FactoryGirl.create(:employee,
-                           username: "jdoe1", email: "jdoe1@jdoe.jdoe",
-                           password: "secret", password_confirmation: "secret",
-                           first_name: "Joe2", last_name: "Doe", kudos_received: 1, kudo_balance: 5)
-
-      @kudo1 = FactoryGirl.create(:kudo_transaction, to_id: @user1.id, from_id: @user2.id, amount: 1)
-      @kudo2 = FactoryGirl.create(:kudo_transaction, to_id: @user2.id, from_id: @user1.id, amount: 2)
-    end
-
-    it "can find the leader for this month" do
-      expect(KudoTransaction).to receive(:max_receiver_for_month).and_return([@kudo1])
-      employees = Employee.leader_this_month
-      expect(employees[0].fullname).to eql("Joe Doe")
-    end
-
-    it "can find the leader for last month" do
-      expect(KudoTransaction).to receive(:max_receiver_for_month).and_return([@kudo2])
-      employees = Employee.leader_last_month
-      expect(employees[0].fullname).to eql("Joe2 Doe")
-    end
-  end
-
-  describe "Kudos" do
-    it "can deduct kudos" do
-      employee = Employee.new first_name: "James", last_name: "Dean", kudo_balance: 100, kudos_received: 50
-      employee.deduct_kudos 5
-      expect(employee.kudo_balance).to eql(95)
-    end
-
-    it "can add kudos" do
-      employee = Employee.new first_name: "James", last_name: "Dean", kudo_balance: 100, kudos_received: 50
-      employee.add_kudos 5
-      expect(employee.kudos_received).to eql(55)
-    end
-  end
 end
