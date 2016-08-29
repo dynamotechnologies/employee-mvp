@@ -29,19 +29,6 @@
             <div class="col-md-3">
               <div class="panel panel-default">
                 <div class="panel-body center-content">
-                  <div class="glyphicon glyphicon-ok glyphicon-profile"></div>
-                  <hr>
-                  <dl>
-                    <dt><%= t('dashboard.profile.kudos.received') %></dt>
-                    <dd></dd>
-                  </dl>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <div class="panel panel-default">
-                <div class="panel-body center-content">
                   <span class="glyphicon glyphicon-star glyphicon-profile"></span>
                   <hr>
                   <dl>
@@ -98,7 +85,6 @@
                   <thead>
                   <th>First Name</th>
                   <th>Last Name</th>
-                  <th>Kudos</th>
                   <th>Give Kudos</th>
                   </thead>
                   <tbody>
@@ -106,7 +92,6 @@
                       <tr>
                         <td><%= employee.first_name %></td>
                         <td><%= employee.last_name %></td>
-                        <td data-kudo-received-id="<%= employee.id %>"><%= employee.kudos_received %></td>
                         <td>
                           <div class="rating">
                             <span class="star" data-toggle="modal" data-target="#kudosModal" data-employee-id="<%= employee.id %>" data-employee-first-name="<%= employee.first_name %>" data-kudos-amount="3"></span>

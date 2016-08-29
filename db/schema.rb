@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160829153121) do
+ActiveRecord::Schema.define(version: 20160829154922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "employees", force: :cascade do |t|
-    t.string   "username",               default: "",    null: false
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "first_name",             default: "",    null: false
@@ -36,7 +35,6 @@ ActiveRecord::Schema.define(version: 20160829153121) do
     t.text     "middle_initial"
     t.index ["email"], name: "index_employees_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true, using: :btree
-    t.index ["username"], name: "index_employees_on_username", unique: true, using: :btree
   end
 
   create_table "kudo_transactions", force: :cascade do |t|

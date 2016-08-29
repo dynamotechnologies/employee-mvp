@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get '/health_check', to: redirect('/health_check.html')
   get 'dashboard' => 'dashboard#index', as: 'dashboard'
+  get 'admin_dashboard' => 'dashboard#admin_index', as: 'admin_dashboard'
   get 'leaderboard' => 'leaderboard#index', as: 'leaderboard'
 
   post 'kudos' => 'kudos#give', as: 'kudos'
