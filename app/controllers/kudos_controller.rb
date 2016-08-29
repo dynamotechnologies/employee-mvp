@@ -4,6 +4,10 @@ class KudosController < ApplicationController
 
   def give
     @kudo_transaction.give_kudos
+    respond_to do |format|
+      format.html { redirect_to(dashboard_path) }
+      format.json
+    end
   end
 
   private 
@@ -17,6 +21,6 @@ class KudosController < ApplicationController
     end
 
     def kudo_transaction_params
-      params.require(:kudo_transaction).permit(:to_id, :amount, :reason)
+      params.require(:kudo_transaction).permit(:to_id, :amount, :reason, :attachment)
     end
 end

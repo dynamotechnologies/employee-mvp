@@ -27,3 +27,7 @@ out
 
 # code coverage output
 coverage
+
+# paperclip
+/public/system/**
+/public/assets/**

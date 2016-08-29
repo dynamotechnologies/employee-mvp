@@ -3,10 +3,13 @@ class KudoTransaction < ApplicationRecord
   validates :from_id, presence: true
   validates :to_id, presence: true
   validates :reason, length: { maximum: 256 }
-  validate  :from_user_must_have_enough_kudos
 
   belongs_to :from, class_name: :Employee, foreign_key: "from_id"
   belongs_to :to, class_name: :Employee, foreign_key: "to_id"
+
+  has_attached_file :attachment
+  do_not_validate_attachment_file_type :attachment
+  validates_with AttachmentSizeValidator, attributes: :attachment, less_than: 100.megabytes
 
   def give_kudos
     transaction do
@@ -24,9 +27,5 @@ class KudoTransaction < ApplicationRecord
       .group("kudo_transactions.to_id")
       .order("month_total desc").limit(limit)
   end
-
-  private
-    def from_user_must_have_enough_kudos
-      errors.add(:amount, "is more than kudos remaining") if from && from.kudo_balance < self.amount
-    end
+  
 end

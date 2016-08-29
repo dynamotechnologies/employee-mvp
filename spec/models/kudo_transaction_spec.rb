@@ -36,15 +36,6 @@ RSpec.describe KudoTransaction, type: :model do
     expect(kudo.errors[:to_id].size).to eq(1)
   end
 
-  it "must have enough balance to give kudos" do
-    kudo = KudoTransaction.new from: admin_user, to: regular_user, amount: 5
-    expect(kudo).to be_valid
-
-    kudo.amount = 101
-    expect(kudo).to_not be_valid
-    expect(kudo.errors[:amount].size).to eq(1)
-  end
-
   it "will allow giving all kudos to someone" do
     kudo = KudoTransaction.new from: admin_user, to: regular_user, amount: 5
     expect(kudo).to be_valid

@@ -4,6 +4,7 @@
     var receiverId;
     var amount;
     var kudosModal = $('#kudosModal');
+    var form = $('#kudos-transaction-form');
 
     var closeModal = function() {
       kudosModal.modal('hide');
@@ -27,45 +28,44 @@
     });
 
     $('.give-btn').click(function(e) {
-      $.ajax({
-        type: 'POST',
-        url: '/kudos',
-        dataType: 'json',
-        data: {
-          kudo_transaction: {
-            to_id: receiverId,
-            amount: amount,
-            reason: $('.kudo-transaction-reason').val()
-          }
-        },
-      }).done(function(data){
-        var balanceField = $('*[data-kudo-balance-id="' + data.from_id +'"]');
-        var receivedField = $('*[data-kudo-received-id="' + data.to_id +'"]');
+      e.preventDefault();
+      $('#kudos-to_id-input').val(receiverId);
+      $('#kudos-transaction-form').submit();
+    });
 
-        var balance = parseInt(balanceField.html());
-        balance -= data.amount;
+    form.on('ajax:success', function(event, data, status, jqXHR) {
+      var balanceField = $('*[data-kudo-balance-id="' + data.from_id +'"]');
+      var receivedField = $('*[data-kudo-received-id="' + data.to_id +'"]');
 
-        var received = parseInt(receivedField.html());
-        received += data.amount;
+      var balance = parseInt(balanceField.html());
+      balance -= data.amount;
 
-        if (isNaN(balance)) {
-          balance = "Unknown";
-        }
-        if (isNaN(received)) {
-          received = "Unknown";
-        }
+      var received = parseInt(receivedField.html());
+      received += data.amount;
 
-        balanceField.html(balance);
-        receivedField.html(received);
-        closeModal();
-      }).fail(function(jqXHR, textStatus, errorThrown) {
-        var errorMessages = [];
-        Object.keys(jqXHR.responseJSON).forEach(function(errorKey) {
-          var errorPredicate = jqXHR.responseJSON[errorKey];
+      if (isNaN(balance)) {
+        balance = "Unknown";
+      }
+      if (isNaN(received)) {
+        received = "Unknown";
+      }
+
+      balanceField.html(balance);
+      receivedField.html(received);
+      closeModal();
+    });
+
+    form.on('ajax:error', function(event, data, status, error) {
+      var errorMessages = [];
+      if (data.responseJSON) {
+        Object.keys(data.responseJSON).forEach(function(errorKey) {
+          var errorPredicate = data.responseJSON[errorKey];
           errorMessages.push(errorKey.charAt(0).toUpperCase() + errorKey.slice(1) + " " + errorPredicate);
         });
-        $('.modal-error-message').html("<h1>Uh no!</h1>" + errorMessages.join("<br/>"));
-      });
+      } else {
+        errorMessages.push("An unknown error occurred.  Please wait and try again.");
+      }
+      $('.modal-error-message').html("<h1>Uh no!</h1>" + errorMessages.join("<br/>"));
     });
   };
  

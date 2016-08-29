@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160827191017) do
+ActiveRecord::Schema.define(version: 20160829164553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,11 +44,15 @@ ActiveRecord::Schema.define(version: 20160827191017) do
     t.integer  "from_id"
     t.integer  "to_id"
     t.integer  "amount"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "month"
     t.integer  "year"
     t.text     "reason"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
     t.index ["from_id"], name: "index_kudo_transactions_on_from_id", using: :btree
     t.index ["month"], name: "index_kudo_transactions_on_month", using: :btree
     t.index ["to_id"], name: "index_kudo_transactions_on_to_id", using: :btree
