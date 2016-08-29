@@ -26,50 +26,6 @@
         </div>
     <% end %>
 
-    <br>
-
-    <div class="panel">
-      <% if @employees && @employees.length > 0 %>
-          <table class="employee-table" id="employee-table">
-            <thead>
-            <tr>
-              <th>Email</th>
-              <th>First Name</th>
-              <th>Middle Initial</th>
-              <th>Last Name</th>
-              <th>Is Admin?</th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <% @employees.each do |employee| %>
-                <tr>
-                  <td><%= employee.email %></td>
-                  <td><%= employee.first_name %></td>
-                  <td><%= employee.middle_initial %></td>
-                  <td><%= employee.last_name %></td>
-                  <td><%= employee.is_admin ? "Yes" : "No" %></td>
-                  <td><%= link_to 'View Details', employee_edit_path(employee) %></td>
-                  <td><%= link_to 'Edit', edit_employee_edit_path(employee) %></td>
-                  <td><%= link_to 'Delete', employee_edit_path(employee), method: :delete, data: {confirm: 'Are you sure?'} %></td>
-                </tr>
-            <% end %>
-            </tbody>
-            <tfoot>
-            <tr>
-              <td colspan="9">
-                <div class="text-center">
-                  <%= paginate @employees %>
-                </div>
-              </td>
-            </tr>
-            </tfoot>
-          </table>
-      <% end %>
-    </div>
-
 
   <div class="panel">
     <% if @employees && @employees.length > 0 %>
@@ -119,14 +75,6 @@
         <%= link_to 'Add New Employee', new_employee_edit_path, class: "btn btn-primary" %>
       </div>
 
-      <div class="col-md-2">
-        <%= link_to 'Back to Kudos dashboard', dashboard_path, class: "btn btn-primary" %>
-      </div>
-
       <div class="col-md-8"></div>
-
-    <div class="col-md-2">
-      <%= link_to 'Back to Admin dashboard', admin_dashboard_path, class: "btn btn-primary" %>
-    </div>
 
 <% end %>
