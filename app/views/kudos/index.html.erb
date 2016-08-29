@@ -3,7 +3,7 @@
     <%= form_tag kudos_path, method: "get", class: 'form-inline' do %>
         <div class="form-group main-search">
           <div class="input-group main-search">
-            <%= text_field_tag "search", "", class: "form-control", id: "kudos-search", placeholder: "Search for Kudos Here..", value: @search_term %>
+            <%= text_field_tag "reason", "", class: "form-control", id: "kudos-search", placeholder: "Search for Kudos Here..", value: params[:reason] %>
             <span class="input-group-btn">
           <button type="submit" class="btn btn-primary">Search!</button>
         </span>

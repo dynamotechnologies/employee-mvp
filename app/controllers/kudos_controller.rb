@@ -5,7 +5,7 @@ class KudosController < ApplicationController
   def index
     params[:order] = params[:order] || 'created_at DESC'
 
-    @kudos = KudoTransaction.order(params[:order]).page(params[:pages]).limit(params[:limit])
+    @kudos = KudoTransaction.where('reason ILIKE ?', "%#{params[:reason]}%").order(params[:order]).page(params[:page])
   end
 
   def create

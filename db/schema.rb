@@ -52,11 +52,11 @@ ActiveRecord::Schema.define(version: 20160829165127) do
     t.integer  "month"
     t.integer  "year"
     t.text     "reason"
+    t.integer  "kudo_categories_id"
     t.string   "attachment_file_name"
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
-    t.integer  "kudo_categories_id"
     t.index ["from_id"], name: "index_kudo_transactions_on_from_id", using: :btree
     t.index ["kudo_categories_id"], name: "index_kudo_transactions_on_kudo_categories_id", using: :btree
     t.index ["month"], name: "index_kudo_transactions_on_month", using: :btree
