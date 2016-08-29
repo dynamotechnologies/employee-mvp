@@ -21,6 +21,14 @@
             <%= f.hidden_field(:amount, value: 1) %>
             <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
           </div>
+          <div class="input-group">
+            <label for="">Kudo Category:</label>
+            <%= f.collection_select(:kudo_categories_id, KudoCategory.all, :id, :name, {include_blank: true}, {class: '', style: ''}) %>
+          </div>
+          <div class="input-group">
+            <label for="kudos-reason">Reason for giving Kudos:</label>
+            <%= f.text_area(:reason) %>
+          </div>
         <% end %>
 
       </div>
