@@ -95,12 +95,13 @@
       <%= render "common/panel", color_class: 'panel-success', title: "MVP" do %>
           <div class="panel panel-default">
             <div class="panel-body center-content">
-              <span class="glyphicon glyphicon-user glyphicon-profile"></span>
+              <div class="user-dash-icon-container shooting-star-icon-200"></div>
+
 
               <hr>
               <dl>
                 <dt>Last Month's MVP:</dt>
-                <dd><%= Employee.leader_last_month.first.try(:fullname) || "N/A" %></dd>
+                <dd><%= Employee.leader_last_month.first.try(:fullname) || "Max Brailovsky" %></dd>
               </dl>
             </div>
           </div>
